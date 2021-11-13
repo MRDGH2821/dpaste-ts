@@ -1,18 +1,19 @@
 {
   "version": "0.0.0",
-  "name": "TODO",
-  "umd:name": "TODO",
-  "repository": "TODO_USERNAME/TODO_REPO",
-  "description": "TODO_MODULE_DESCRIPTION",
+  "name": "dpaste-js",
+  "umd:name": "dpaste-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MRDGH2821/dpaste-js",}
+  "description": "MRDGH2821/dpaste-js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "license": "MIT",
   "author": {
-    "name": "TODO_YOUR_NAME",
-    "email": "YOUR_EMAIL@TODO.com",
-    "url": "https://TODO_WEBSITE.com"
+    "name": "MRDGH2821",
+    "url": "https://bit.ly/mrdgh2821"
   },
   "files": [
     "dist",
@@ -33,10 +34,13 @@
     "prepublishOnly": "npm run build",
     "test": "uvu -r ts-node/register test"
   },
+  "bugs": {
+   "url": "https://github.com/MRDGH2821/dpaste-js/issues"
+ },
   "keywords": [
-    "TODO",
-    "module",
-    "keywords"
+    "dpaste",
+    "pastebin",
+    "wrapper"
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "8.1.0",
@@ -46,5 +50,8 @@
     "ts-node": "8.10.2",
     "typescript": "3.9.6",
     "uvu": "0.0.19"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }
