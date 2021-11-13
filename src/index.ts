@@ -1,17 +1,21 @@
-export function sum(...nums: number[]): number {
-	let i=0, total=0;
-	for (; i < nums.length; i++) total += nums[i];
-	return total;
+const axios = require('axios').default;
+import { Lexer, Expires, jsdata } from '../src/lib/Interfaces';
+async function CreatePaste(content: string, filename: string, lexer?: Lexer, expires?: Expires) {
+	await axios({
+		url: "https:/dpaste.de/api/",
+    method: "post",
+		params: {
+			content: content,
+			filename: filename,
+			lexer: lexer,
+			expires: expires,
+			format: JSON,
+		}
+	})
+		.then((jsdata: jsdata) => { return jsdata; })
+		.catch((error: string) => { return error; })
 }
 
-export function substract(...nums: number[]): number {
-	let i=0, total = nums[i++] | 0;
-	for (; i < nums.length; i++) total -= nums[i];
-	return total;
-}
-
-export function average(...nums: number[]): number {
-	let i=0, len=nums.length, total=0;
-	for (; i < len; i++) total += nums[i];
-	return total / len;
+module.exports = {
+  CreatePaste,
 }
