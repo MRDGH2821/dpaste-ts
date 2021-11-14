@@ -14,7 +14,19 @@ import { Lexer, Expires, PasteFormat } from '../lib/Interfaces';
 * @param {Expires} expires - Expiry duration of the paste
 * @returns {Promise<PasteFormat>}
 */
-export async function CreatePaste(content: string, filename: string, lexer: Lexer = 'text', expires: Expires = '2592000'): Promise<PasteFormat> {
+export async function CreatePaste(content: string, filename: string, lexer: Lexer = 'text', expires: Expires = '2592000'): Promise<String> {
+	const res = await fetch('https://dpaste.com/api/v2/', {
+
+		method: 'POST',
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: "content=" + encodeURIComponent(content) + "&syntax=" + encodeURIComponent(lexer) + "&title=" + encodeURIComponent(filename),
+	})
+	return res.text();
+	/*
+		.then((jsdata: PasteFormat) => { return jsdata; })
+		.catch((error: PasteFormat) => { return error; })
+	*/
+	/*
 	const form = new FormData();
 	form.append('content', content);
 	form.append('lexer', lexer);
@@ -30,7 +42,7 @@ export async function CreatePaste(content: string, filename: string, lexer: Lexe
 	})
 		.then((jsdata: PasteFormat) => { return jsdata; })
 		.catch((error: PasteFormat) => { return error; })
-	/*
+
 		method: "post",
 		data: {
 			content: content,
