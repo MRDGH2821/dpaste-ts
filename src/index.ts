@@ -9,10 +9,10 @@ import { Lexer, Expires, PasteFormat } from '../lib/Interfaces';
 * @param {string} filename - The title for Paste
 * @param {Lexer} lexer - Paste encoding
 * @param {Expires} expires - Expiry duration of the paste
-* @returns {PasteFormat}
+* @returns {Promise<PasteFormat>}
 */
-async function CreatePaste(content: string, filename: string, lexer?: Lexer, expires?: Expires) {
-	await axios({
+export async function CreatePaste(content: string, filename: string, lexer: Lexer = 'text', expires: Expires = '2592000'): Promise<PasteFormat> {
+	return await axios({
 		url: "https:/dpaste.de/api/",
 		method: "post",
 		params: {
@@ -33,12 +33,7 @@ async function CreatePaste(content: string, filename: string, lexer?: Lexer, exp
 * @function GetPaste
 * @param {string} url - The dpaste url
 */
-async function GetPaste(url: string) {
+export async function GetPaste(url: string) {
 	const data = await axios.get(url);
 	console.log(data);
-}
-
-module.exports = {
-	CreatePaste,
-	GetPaste
 }
