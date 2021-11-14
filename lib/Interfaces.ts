@@ -443,7 +443,7 @@ export type Lexer = |'abap'// 'ABAP')//
 
 export type Expires = 'onetime' | 'never' | '3600' | '604800' | '2592000'
 
-export type jsdata =
+export type PasteFormat =
 	{
 		url: String,
 		lexer: Lexer,
