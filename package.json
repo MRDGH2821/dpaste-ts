@@ -62,6 +62,7 @@
     "axios": "^0.24.0",
     "dpaste-js": "file:.yalc/dpaste-js",
     "form-data": "^4.0.0",
+    "object-to-formdata": "^4.1.0",
     "qs": "^6.10.1"
   }
 }
