@@ -28,10 +28,10 @@ async function CreatePaste(content: string, filename: string, lexer?: Lexer, exp
 }
 
 /**
-* Creates Paste on dpaste.org
+* Gets Paste from dpaste.org
 * @async
 * @function GetPaste
-* @param {string} url - The dpaste url 
+* @param {string} url - The dpaste url
 */
 async function GetPaste(url: string) {
 	const data = await axios.get(url);
