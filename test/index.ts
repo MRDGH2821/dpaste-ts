@@ -1,17 +1,27 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import * as math from '../src';
+import * as paste from '../src';
+import { PasteFormat } from '../lib/Interfaces'
 
 const API = suite('exports');
 
 API('should export an object', () => {
-	assert.type(math, 'object');
+	assert.type(paste, 'object');
 });
 
 API.run();
 
-// ---
+const create = suite('create');
 
+const data = 'Some  sample data for testing dpaste module';
+const title = 'Dpaste Module Test';
+
+create('should create a paste & return JSON or string', () => {
+	assert.type(paste.CreatePaste(data, title), 'object' || 'string');
+})
+
+// ---
+/*
 const sum = suite('sum');
 
 sum('should be a function', () => {
@@ -117,3 +127,4 @@ average('should handle multiple arguments', () => {
 });
 
 average.run();
+*/
