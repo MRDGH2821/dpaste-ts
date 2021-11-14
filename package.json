@@ -4,7 +4,9 @@
   "umd:name": "dpaste-js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MRDGH2821/dpaste-js",}
+    "url": "git+https://github.com/MRDGH2821/dpaste-js.git"
+  },
+  "homepage": "https://github.com/MRDGH2821/dpaste-js",
   "description": "MRDGH2821/dpaste-js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.mjs",
@@ -32,11 +34,15 @@
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
-    "test": "uvu -r ts-node/register test"
+    "test": "uvu -r ts-node/register test",
+    "mytest": "node test.js ",
+    "prepublish": "npm run build",
+    "premytest": "yalc publish && yalc add dpaste-js",
+    "tsc-init": " cd node_modules/.bin/ && tsc --init"
   },
   "bugs": {
-   "url": "https://github.com/MRDGH2821/dpaste-js/issues"
- },
+    "url": "https://github.com/MRDGH2821/dpaste-js/issues"
+  },
   "keywords": [
     "dpaste",
     "pastebin",
@@ -49,9 +55,13 @@
     "rollup-plugin-typescript2": "0.27.1",
     "ts-node": "8.10.2",
     "typescript": "3.9.6",
-    "uvu": "0.0.19"
+    "uvu": "0.0.19",
+    "yalc": "^1.0.0-pre.53"
   },
   "dependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.24.0",
+    "dpaste-js": "file:.yalc/dpaste-js",
+    "form-data": "^4.0.0",
+    "qs": "^6.10.1"
   }
 }
