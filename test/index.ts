@@ -1,7 +1,7 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
 import * as paste from '../src';
-import { PasteFormat } from '../lib/Interfaces'
+//import { PasteFormat } from '../lib/Interfaces'
 
 const API = suite('exports');
 
@@ -19,6 +19,8 @@ const title = 'Dpaste Module Test';
 create('should create a paste & return JSON or string', () => {
 	assert.type(paste.CreatePaste(data, title), 'object' || 'string');
 })
+
+create.run();
 
 // ---
 /*
