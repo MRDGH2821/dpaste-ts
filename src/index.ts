@@ -1,9 +1,9 @@
 const axios = require('axios').default;
-const qs = require('qs');
+//const qs = require('qs');
 import { Lexer, Expires, PasteFormat } from '../lib/Interfaces';
-const FormData = require('form-data');
+//const FormData = require('form-data');
 
-const form = new FormData();
+//const form = new FormData();
 /**
 * Creates Paste on dpaste.org
 * @async
@@ -18,10 +18,16 @@ export async function CreatePaste(content: string, filename: string, lexer: Lexe
 	const form = new FormData();
 	form.append('content', content);
 	form.append('lexer', lexer);
-	form.append('format', JSON);
+	form.append('format', 'JSON');
 	form.append('expires', expires);
 	form.append('filename', filename);
-	return await axios.post("https:/dpaste.org/api/", form, { headers: form.getHeaders() })
+	return await axios({
+		url: "https://dpaste.com/api/",
+		method: 'post',
+		headers: {
+			'Content-Type': "multipart/form-data",
+		}
+	})
 		.then((jsdata: PasteFormat) => { return jsdata; })
 		.catch((error: PasteFormat) => { return error; })
 	/*
@@ -36,7 +42,6 @@ export async function CreatePaste(content: string, filename: string, lexer: Lexe
 
 	})
 	*/
-
 }
 
 /**
