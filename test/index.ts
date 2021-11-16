@@ -17,7 +17,7 @@ let url = paste.CreatePaste(data, title);
 
 const create = suite('create');
 
-create('should create a paste & return String', async () => {
+create('Should create a paste & return String', async () => {
 	assert.type(await paste.CreatePaste(data, title), 'string');
 })
 
@@ -26,8 +26,8 @@ create.run();
 const get = suite('get');
 
 
-get('should get a paste & return String', async () => {
-	assert.type(await paste.GetPaste(await url), 'string');
+get('Should get a paste & return String', async () => {
+	assert.type(await paste.GetRawPaste(await url), 'string');
 })
 
 get.run();
