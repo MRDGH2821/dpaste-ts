@@ -47,9 +47,9 @@ function isValidExpiry(days: number): boolean {
 * @param {string} filename - The title for Paste
 * @param {Syntax} syntax - Paste encoding
 * @param {Expiry_Days} expiry_days - Expiry duration of the paste
-* @returns {Promise<String>}
+* @returns {Promise<string>}
 */
-export async function CreatePaste(content: string, filename: string, syntax: Syntax = 'text', expiry_days: Expiry_Days = 7): Promise<String> {
+export async function CreatePaste(content: string, filename: string, syntax: Syntax = 'text', expiry_days: Expiry_Days = 7): Promise<string> {
 	delay(1000);
 	try {
 		if (isValidSize(content) && isValidSyntax(syntax) && isValidExpiry(expiry_days)) {
@@ -86,16 +86,16 @@ export async function CreatePaste(content: string, filename: string, syntax: Syn
 * @async
 * @function GetPaste
 * @param {string} url - The dpaste url
-* @returns {string}
+* @returns {Promise<string>}
 */
-export async function GetPaste(url: string): Promise<String> {
+export async function GetPaste(url: string): Promise<string> {
 	delay(1000);
 	if (!/https:\/\/dpaste.com\//gm.test(url)) {
 		url = `https://dpaste.com/${url}`
 	}
 	try {
 		const { data } = await axios.get(`${url}.txt`);
-		return (data);
+		return data;
 	}
 	catch (error) {
 		return "Invalid Link";
