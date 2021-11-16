@@ -1,13 +1,13 @@
 {
-  "version": "0.0.0",
-  "name": "dpaste-js",
-  "umd:name": "dpaste-js",
+  "version": "1.0.0",
+  "name": "dpaste-ts",
+  "umd:name": "dpaste-ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MRDGH2821/dpaste-js.git"
   },
   "homepage": "https://github.com/MRDGH2821/dpaste-js",
-  "description": "MRDGH2821/dpaste-js",
+  "description": "Nodejs wrapper for dpaste.com using typescript",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -17,10 +17,7 @@
     "name": "MRDGH2821",
     "url": "https://bit.ly/mrdgh2821"
   },
-  "files": [
-    "dist",
-    "types"
-  ],
+  "files": ["dist", "types"],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -43,11 +40,7 @@
   "bugs": {
     "url": "https://github.com/MRDGH2821/dpaste-js/issues"
   },
-  "keywords": [
-    "dpaste",
-    "pastebin",
-    "wrapper"
-  ],
+  "keywords": ["dpaste", "pastebin", "wrapper"],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "8.1.0",
     "rollup": "2.21.0",
@@ -60,5 +53,6 @@
   },
   "dependencies": {
     "axios": "^0.24.0"
-  }
+  },
+  "contributers": {}
 }

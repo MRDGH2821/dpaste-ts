@@ -3,11 +3,9 @@
     "transpileOnly": true,
     "compilerOptions": {
       "module": "commonjs",
-      "sourceMap": true,
+      "sourceMap": true
     },
-    "include": [
-      "test/**/*"
-    ]
+    "include": ["test/**/*"]
   },
   "compilerOptions": {
     "target": "esnext",
@@ -20,11 +18,6 @@
     "noImplicitAny": true,
     "strict": true
   },
-  "include": [
-    "@types/**/*",
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["@types/**/*", "src/**/*"],
+  "exclude": ["node_modules"]
 }
