@@ -13,21 +13,21 @@ API.run();
 const data = 'Some sample data for testing dpaste module using uvu';
 const title = 'Dpaste Module Test';
 
-let url: string;
+let url = paste.CreatePaste(data, title);
 
 const create = suite('create');
 
 create('should create a paste & return String', async () => {
-	assert.type(paste.CreatePaste(data, title).then(link => { url = link }), 'string');
+	assert.type(await paste.CreatePaste(data, title), 'string');
 })
 
 create.run();
 
 const get = suite('get');
 
-const rawData = paste.GetPaste(url);
+
 get('should get a paste & return String', async () => {
-	assert.type(await rawData, 'string');
+	assert.type(await paste.GetPaste(await url), 'string');
 })
 
 get.run();
