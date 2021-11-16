@@ -16,12 +16,20 @@ import { Syntax, Expiry_Days } from '../lib/Interfaces';
 * @returns {Promise<String>}
 */
 export async function CreatePaste(content: string, filename: string, syntax: Syntax = 'text', expiry_days: Expiry_Days = 7): Promise<String> {
+	/*
 	const res = await fetch('https://dpaste.com/api/v2/', {
 		method: 'POST',
 		headers: { "Content-Type": "application/x-www-form-urlencoded" },
 		body: "content=" + encodeURIComponent(content) + "&syntax=" + encodeURIComponent(syntax) + "&title=" + encodeURIComponent(filename) + "&expiry_days" + encodeURIComponent(expiry_days),
 	})
 	return res.text();
+*/
+	return await axios({
+		url: "https://dpaste.com/api/v2/",
+		method: 'POST',
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		data: "content=" + encodeURIComponent(content) + "&syntax=" + encodeURIComponent(syntax) + "&title=" + encodeURIComponent(filename) + "&expiry_days" + encodeURIComponent(expiry_days),
+	})
 }
 
 /**
