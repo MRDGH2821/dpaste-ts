@@ -1,5 +1,7 @@
 # dpaste-ts
 
+[![codecov](https://codecov.io/gh/MRDGH2821/dpaste-js/branch/master/graph/badge.svg?token=6LKVVGGYN2)](https://codecov.io/gh/MRDGH2821/dpaste-js)
+
 Nodejs wrapper for [dpaste.com](https://dpaste.com/) using TypeScript.
 Creates & Gets pastes anonymously.
 
@@ -74,4 +76,4 @@ GetRawPaste(url).then(console.log); //Will return "sample input" as raw data
 
 ## Licence
 
-[MIT](./licence) 
+[MIT](./licence)
