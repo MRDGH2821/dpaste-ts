@@ -10,17 +10,27 @@ API('should export an object', () => {
 });
 
 API.run();
-
-const create = suite('create');
-
-const data = 'Some  sample data for testing dpaste module';
+const data = 'Some sample data for testing dpaste module using uvu';
 const title = 'Dpaste Module Test';
 
-create('should create a paste & return JSON or string', () => {
-	assert.type(paste.CreatePaste(data, title), 'object' || 'string');
+let url: string;
+paste.CreatePaste(data, title).then(link => { url = link });
+const create = suite('create');
+
+create('should create a paste & return string', async () => {
+	assert.type(url, 'string');
 })
 
 create.run();
+
+const get = suite('get');
+
+const rawData = paste.GetPaste(url);
+get('should get a paste & return string', async () => {
+	assert.type(await rawData, 'string');
+})
+
+get.run();
 
 // ---
 /*
