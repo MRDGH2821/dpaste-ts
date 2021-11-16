@@ -71,3 +71,7 @@ CreatePaste(source, title, syntax, expire).then(link => {
 
 GetRawPaste(url).then(console.log); //Will return "sample input" as raw data
 ```
+
+## Licence
+
+[MIT](./licence) 
