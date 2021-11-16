@@ -1,9 +1,14 @@
-const {CreatePaste, GetPaste} = require('dpaste-js');
-const fetch = require('cross-fetch').default;
-const axios = require('axios').default;
+const { CreatePaste, GetPaste } = require("dpaste-js");
 
-const data = 'Some sample data for testing dpaste module in plain text using axios. Now with proper error handling';
-const title = 'Dpaste Module Axios Test';
-CreatePaste(data, title, 'text').then(console.log).catch(console.log);
+const data =
+	"Some sample data for testing dpaste module in plain text using axios. Now with proper error handling";
+const title = "Dpaste Module Axios Test";
+let url;
+CreatePaste(data, title, "text", 1)
+	.then(data => {
+		url = data;
+    console.log(data);
+	})
+	.catch(console.log);
 
-GetPaste('https://dpaste.com/F5VXWRTCA').then(console.log);
+GetPaste(url).then(console.log);
