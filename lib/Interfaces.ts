@@ -1,451 +1,477 @@
-export type Lexer = |'abap'// 'ABAP')//
-	| 'abnf'// 'ABNF')//
-	| 'ada'// 'Ada')//
-	| 'adl'// 'ADL')//
-	| 'agda'// 'Agda')//
-	| 'aheui'// 'Aheui')//
-	| 'ahk'// 'autohotkey')//
-	| 'alloy'// 'Alloy')//
-	| 'ampl'// 'Ampl')//
-	| 'antlr'// 'ANTLR')//
-	| 'antlr-as'// 'ANTLR With ActionScript Target')//
-	| 'antlr-cpp'// 'ANTLR With CPP Target')//
-	| 'antlr-csharp'// 'ANTLR With C Target')//
-	| 'antlr-java'// 'ANTLR With Java Target')//
-	| 'antlr-objc'// 'ANTLR With ObjectiveC Target')//
-	| 'antlr-perl'// 'ANTLR With Perl Target')//
-	| 'antlr-python'// 'ANTLR With Python Target')//
-	| 'antlr-ruby'// 'ANTLR With Ruby Target')//
-	| 'apacheconf'// 'ApacheConf')//
-	| 'apl'// 'APL')//
-	| "applescript"// "AppleScript")//
-	| "arduino"// "Arduino")//
-	| 'as'// 'ActionScript')//
-	| 'as3'// 'ActionScript 3')//
-	| 'aspectj'// 'AspectJ')//
-	| 'aspx-cs'// 'aspx-cs')//
-	| 'aspx-vb'// 'aspx-vb')//
-	| 'asy'// 'Asymptote')//
-	| 'at'// 'AmbientTalk')//
-	| 'autoit'// 'AutoIt')//
-	| 'awk'// 'Awk')//
-	| 'basemake'// 'Base Makefile')//
-	| "bash"// "Bash")//
-	| "bat"// "Batchfile")//
-	| 'bbcode'// 'BBCode')//
-	| 'bc'// 'BC')//
-	| 'befunge'// 'Befunge')//
-	| 'bib'// 'BibTeX')//
-	| 'blitzbasic'// 'BlitzBasic')//
-	| 'blitzmax'// 'BlitzMax')//
-	| 'bnf'// 'BNF')//
-	| 'boo'// 'Boo')//
-	| 'boogie'// 'Boogie')//
-	| 'brainfuck'// 'Brainfuck')//
-	| 'bro'// 'Bro')//
-	| 'bst'// 'BST')//
-	| 'bugs'// 'BUGS')//
-	| "c"// "C")//
-	| 'c-objdump'// 'c-objdump')//
-	| 'ca65'// 'ca65 assembler')//
-	| 'cadl'// 'cADL')//
-	| 'camkes'// 'CAmkES')//
-	| 'capdl'// 'CapDL')//
-	| 'capnp'// "Cap'n Proto")//
-	| 'cbmbas'// 'CBM BASIC V2')//
-	| 'ceylon'// 'Ceylon')//
-	| 'cfc'// 'Coldfusion CFC')//
-	| 'cfengine3'// 'CFEngine3')//
-	| 'cfm'// 'Coldfusion HTML')//
-	| 'cfs'// 'cfstatement')//
-	| 'chai'// 'ChaiScript')//
-	| 'chapel'// 'Chapel')//
-	| 'cheetah'// 'Cheetah')//
-	| 'cirru'// 'Cirru')//
-	| 'clay'// 'Clay')//
-	| 'clean'// 'Clean')//
-	| "clojure"// "Clojure")//
-	| 'clojurescript'// 'ClojureScript')//
-	| "cmake"// "CMake")//
-	| 'cobol'// 'COBOL')//
-	| 'cobolfree'// 'COBOLFree')//
-	| "coffee-script"// "CoffeeScript")//
-	| "common-lisp"// "Common Lisp")//
-	| 'componentpascal'// 'Component Pascal')//
-	| "console"// "Console/Bash Session")//
-	| 'control'// 'Debian Control file')//
-	| 'coq'// 'Coq')//
-	| 'cpp'// 'C++')//
-	| 'cpp-objdump'// 'cpp-objdump')//
-	| 'cpsa'// 'CPSA')//
-	| 'cr'// 'Crystal')//
-	| 'crmsh'// 'Crmsh')//
-	| 'croc'// 'Croc')//
-	| 'cryptol'// 'Cryptol')//
-	| "csharp"// "C")//
-	| 'csound'// 'Csound Orchestra')//
-	| 'csound-document'// 'Csound Document')//
-	| 'csound-score'// 'Csound Score')//
-	| "css"// "CSS")//
-	| 'css+django'// 'CSS+Django/Jinja')//
-	| 'css+erb'// 'CSS+Ruby')//
-	| 'css+genshitext'// 'CSS+Genshi Text')//
-	| 'css+lasso'// 'CSS+Lasso')//
-	| 'css+mako'// 'CSS+Mako')//
-	| 'css+mozpreproc'// 'CSS+mozpreproc')//
-	| 'css+myghty'// 'CSS+Myghty')//
-	| 'css+php'// 'CSS+PHP')//
-	| 'css+smarty'// 'CSS+Smarty')//
-	| 'cucumber'// 'Gherkin')//
-	| "cuda"// "CUDA")//
-	| 'cypher'// 'Cypher')//
-	| 'cython'// 'Cython')//
-	| "d"// "D")//
-	| 'd-objdump'// 'd-objdump')//
-	| "dart"// "Dart")//
-	| "delphi"// "Delphi")//
-	| 'dg'// 'dg')//
-	| "diff"// "Diff")//
-	| "django"// "Django/Jinja")//
-	| "docker"// "Docker")//
-	| 'doscon'// 'MSDOS Session')//
-	| 'dpatch'// 'Darcs Patch')//
-	| 'dtd'// 'DTD')//
-	| 'duel'// 'Duel')//
-	| 'dylan'// 'Dylan')//
-	| 'dylan-console'// 'Dylan session')//
-	| 'dylan-lid'// 'DylanLID')//
-	| 'earl-grey'// 'Earl Grey')//
-	| 'easytrieve'// 'Easytrieve')//
-	| 'ebnf'// 'EBNF')//
-	| 'ec'// 'eC')//
-	| 'ecl'// 'ECL')//
-	| 'eiffel'// 'Eiffel')//
-	| "elixir"// "Elixir")//
-	| 'elm'// 'Elm')//
-	| 'emacs'// 'EmacsLisp')//
-	| 'erb'// 'ERB')//
-	| 'erl'// 'Erlang erl session')//
-	| "erlang"// "Erlang")//
-	| 'evoque'// 'Evoque')//
-	| 'extempore'// 'xtlang')//
-	| 'ezhil'// 'Ezhil')//
-	| 'factor'// 'Factor')//
-	| 'fan'// 'Fantom')//
-	| 'fancy'// 'Fancy')//
-	| 'felix'// 'Felix')//
-	| 'fennel'// 'Fennel')//
-	| 'fish'// 'Fish')//
-	| 'flatline'// 'Flatline')//
-	| 'forth'// 'Forth')//
-	| 'fortran'// 'Fortran')//
-	| 'fortranfixed'// 'FortranFixed')//
-	| 'foxpro'// 'FoxPro')//
-	| 'fsharp'// 'FSharp')//
-	| 'gap'// 'GAP')//
-	| 'gas'// 'GAS')//
-	| 'genshi'// 'Genshi')//
-	| 'genshitext'// 'Genshi Text')//
-	| 'glsl'// 'GLSL')//
-	| 'gnuplot'// 'Gnuplot')//
-	| "go"// "Go")//
-	| 'golo'// 'Golo')//
-	| 'gooddata-cl'// 'GoodData-CL')//
-	| 'gosu'// 'Gosu')//
-	| 'groff'// 'Groff')//
-	| 'groovy'// 'Groovy')//
-	| 'gst'// 'Gosu Template')//
-	| 'haml'// 'Haml')//
-	| "handlebars"// "Handlebars")//
-	| "haskell"// "Haskell")//
-	| 'haxeml'// 'Hxml')//
-	| 'hexdump'// 'Hexdump')//
-	| 'hlsl'// 'HLSL')//
-	| 'hsail'// 'HSAIL')//
-	| "html"// "HTML")//
-	| 'html+cheetah'// 'HTML+Cheetah')//
-	| "html+django"// "HTML + Django/Jinja")//
-	| 'html+evoque'// 'HTML+Evoque')//
-	| 'html+genshi'// 'HTML+Genshi')//
-	| 'html+handlebars'// 'HTML+Handlebars')//
-	| 'html+lasso'// 'HTML+Lasso')//
-	| 'html+mako'// 'HTML+Mako')//
-	| 'html+myghty'// 'HTML+Myghty')//
-	| 'html+ng2'// 'HTML + Angular2')//
-	| 'html+php'// 'HTML+PHP')//
-	| 'html+smarty'// 'HTML+Smarty')//
-	| 'html+twig'// 'HTML+Twig')//
-	| 'html+velocity'// 'HTML+Velocity')//
-	| 'http'// 'HTTP')//
-	| 'hx'// 'Haxe')//
-	| 'hybris'// 'Hybris')//
-	| 'hylang'// 'Hy')//
-	| 'i6t'// 'Inform 6 template')//
-	| 'idl'// 'IDL')//
-	| 'idris'// 'Idris')//
-	| 'iex'// 'Elixir iex session')//
-	| 'igor'// 'Igor')//
-	| 'inform6'// 'Inform 6')//
-	| 'inform7'// 'Inform 7')//
-	| "ini"// "INI")//
-	| 'io'// 'Io')//
-	| 'ioke'// 'Ioke')//
-	| 'ipython2'// 'IPython')//
-	| 'ipython3'// 'IPython3')//
-	| "ipythonconsole"// "IPython console session")//
-	| "irc"// "IRC logs")//
-	| 'isabelle'// 'Isabelle')//
-	| 'j'// 'J')//
-	| 'jags'// 'JAGS')//
-	| 'jasmin'// 'Jasmin')//
-	| "java"// "Java")//
-	| 'javascript+mozpreproc'// 'Javascript+mozpreproc')//
-	| 'jcl'// 'JCL')//
-	| 'jlcon'// 'Julia console')//
-	| "js"// "JavaScript")//
-	| 'js+cheetah'// 'JavaScript+Cheetah')//
-	| 'js+django'// 'JavaScript+Django/Jinja')//
-	| 'js+erb'// 'JavaScript+Ruby')//
-	| 'js+genshitext'// 'JavaScript+Genshi Text')//
-	| 'js+lasso'// 'JavaScript+Lasso')//
-	| 'js+mako'// 'JavaScript+Mako')//
-	| 'js+myghty'// 'JavaScript+Myghty')//
-	| 'js+php'// 'JavaScript+PHP')//
-	| 'js+smarty'// 'JavaScript+Smarty')//
-	| 'jsgf'// 'JSGF')//
-	| "json"// "JSON")//
-	| "jsx"// "JSX/React")//
-	| 'json-object'// 'JSONBareObject')//
-	| 'jsonld'// 'JSON-LD')//
-	| 'jsp'// 'Java Server Page')//
-	| 'julia'// 'Julia')//
-	| 'juttle'// 'Juttle')//
-	| 'kal'// 'Kal')//
-	| 'kconfig'// 'Kconfig')//
-	| 'koka'// 'Koka')//
-	| "kotlin"// "Kotlin")//
-	| 'lagda'// 'Literate Agda')//
-	| 'lasso'// 'Lasso')//
-	| 'lcry'// 'Literate Cryptol')//
-	| 'lean'// 'Lean')//
-	| "less"// "LessCSS")//
-	| 'lhs'// 'Literate Haskell')//
-	| 'lidr'// 'Literate Idris')//
-	| 'lighty'// 'Lighttpd configuration file')//
-	| 'limbo'// 'Limbo')//
-	| 'liquid'// 'liquid')//
-	| 'live-script'// 'LiveScript')//
-	| 'llvm'// 'LLVM')//
-	| 'logos'// 'Logos')//
-	| 'logtalk'// 'Logtalk')//
-	| 'lsl'// 'LSL')//
-	| "lua"// "Lua")//
-	| "make"// "Makefile")//
-	| 'mako'// 'Mako')//
-	| 'maql'// 'MAQL')//
-	| 'mask'// 'Mask')//
-	| 'mason'// 'Mason')//
-	| 'mathematica'// 'Mathematica')//
-	| "matlab"// "Matlab")//
-	| 'matlabsession'// 'Matlab session')//
-	| 'md'// 'markdown')//
-	| 'minid'// 'MiniD')//
-	| 'modelica'// 'Modelica')//
-	| 'modula2'// 'Modula-2')//
-	| 'monkey'// 'Monkey')//
-	| 'monte'// 'Monte')//
-	| 'moocode'// 'MOOCode')//
-	| 'moon'// 'MoonScript')//
-	| 'mozhashpreproc'// 'mozhashpreproc')//
-	| 'mozpercentpreproc'// 'mozpercentpreproc')//
-	| 'mql'// 'MQL')//
-	| 'mscgen'// 'Mscgen')//
-	| 'mupad'// 'MuPAD')//
-	| 'mxml'// 'MXML')//
-	| 'myghty'// 'Myghty')//
-	| 'mysql'// 'MySQL')//
-	| 'nasm'// 'NASM')//
-	| 'ncl'// 'NCL')//
-	| 'nemerle'// 'Nemerle')//
-	| 'nesc'// 'nesC')//
-	| 'newlisp'// 'NewLisp')//
-	| 'newspeak'// 'Newspeak')//
-	| 'ng2'// 'Angular2')//
-	| "nginx"// "Nginx configuration file")//
-	| 'nim'// 'Nimrod')//
-	| 'nit'// 'Nit')//
-	| 'nixos'// 'Nix')//
-	| 'nsis'// 'NSIS')//
-	| "numpy"// "NumPy")//
-	| 'nusmv'// 'NuSMV')//
-	| 'objdump'// 'objdump')//
-	| 'objdump-nasm'// 'objdump-nasm')//
-	| "objective-c"// "Objective-C")//
-	| 'objective-c++'// 'Objective-C++')//
-	| 'objective-j'// 'Objective-J')//
-	| 'ocaml'// 'OCaml')//
-	| 'octave'// 'Octave')//
-	| 'odin'// 'ODIN')//
-	| 'ooc'// 'Ooc')//
-	| 'opa'// 'Opa')//
-	| 'openedge'// 'OpenEdge ABL')//
-	| 'pacmanconf'// 'PacmanConf')//
-	| 'pan'// 'Pan')//
-	| 'parasail'// 'ParaSail')//
-	| 'pawn'// 'Pawn')//
-	| "perl"// "Perl")//
-	| 'perl6'// 'Perl6')//
-	| "php"// "PHP")//
-	| 'pig'// 'Pig')//
-	| 'pike'// 'Pike')//
-	| 'pkgconfig'// 'PkgConfig')//
-	| 'plpgsql'// 'PL/pgSQL')//
-	| "postgresql"// "PostgreSQL SQL dialect")//
-	| 'postscript'// 'PostScript')//
-	| 'pot'// 'Gettext Catalog')//
-	| 'pov'// 'POVRay')//
-	| 'powershell'// 'PowerShell')//
-	| 'praat'// 'Praat')//
-	| 'prolog'// 'Prolog')//
-	| 'properties'// 'Properties')//
-	| 'protobuf'// 'Protocol Buffer')//
-	| 'ps1con'// 'PowerShell Session')//
-	| 'psql'// 'PostgreSQL console |psql)')//
-	| 'pug'// 'Pug')//
-	| 'puppet'// 'Puppet')//
-	| 'py3tb'// 'Python 3.0 Traceback')//
-	| 'pycon'// 'Python console session')//
-	| 'pypylog'// 'PyPy Log')//
-	| 'pytb'// 'Python Traceback')//
-	| "python"// "Python")//
-	| 'python3'// 'Python 3')//
-	| 'qbasic'// 'QBasic')//
-	| 'qml'// 'QML')//
-	| 'qvto'// 'QVTO')//
-	| 'racket'// 'Racket')//
-	| 'ragel'// 'Ragel')//
-	| 'ragel-c'// 'Ragel in C Host')//
-	| 'ragel-cpp'// 'Ragel in CPP Host')//
-	| 'ragel-d'// 'Ragel in D Host')//
-	| 'ragel-em'// 'Embedded Ragel')//
-	| 'ragel-java'// 'Ragel in Java Host')//
-	| 'ragel-objc'// 'Ragel in Objective C Host')//
-	| 'ragel-ruby'// 'Ragel in Ruby Host')//
-	| 'raw'// 'Raw token data')//
-	| "rb"// "Ruby")//
-	| 'rbcon'// 'Ruby irb session')//
-	| 'rconsole'// 'RConsole')//
-	| 'rd'// 'Rd')//
-	| 'rebol'// 'REBOL')//
-	| 'red'// 'Red')//
-	| 'redcode'// 'Redcode')//
-	| 'registry'// 'reg')//
-	| 'resource'// 'ResourceBundle')//
-	| 'rexx'// 'Rexx')//
-	| 'rhtml'// 'RHTML')//
-	| 'rnc'// 'Relax-NG Compact')//
-	| 'roboconf-graph'// 'Roboconf Graph')//
-	| 'roboconf-instances'// 'Roboconf Instances')//
-	| 'robotframework'// 'RobotFramework')//
-	| 'rql'// 'RQL')//
-	| 'rsl'// 'RSL')//
-	| "rst"// "reStructuredText")//
-	| 'rts'// 'TrafficScript')//
-	| "rust"// "Rust")//
-	| 'sas'// 'SAS')//
-	| "sass"// "Sass")//
-	| 'sc'// 'SuperCollider')//
-	| 'scala'// 'Scala')//
-	| 'scaml'// 'Scaml')//
-	| 'scheme'// 'Scheme')//
-	| 'scilab'// 'Scilab')//
-	| "scss"// "SCSS")//
-	| 'shen'// 'Shen')//
-	| 'silver'// 'Silver')//
-	| 'slim'// 'Slim')//
-	| 'smali'// 'Smali')//
-	| 'smalltalk'// 'Smalltalk')//
-	| 'smarty'// 'Smarty')//
-	| 'sml'// 'Standard ML')//
-	| 'snobol'// 'Snobol')//
-	| 'snowball'// 'Snowball')//
-	| "sol"// "Solidity")//
-	| 'sourceslist'// 'Debian Sourcelist')//
-	| 'sp'// 'SourcePawn')//
-	| 'sparql'// 'SPARQL')//
-	| 'spec'// 'RPMSpec')//
-	| 'splus'// 'S')//
-	| "sql"// "SQL")//
-	| 'sqlite3'// 'sqlite3con')//
-	| 'squidconf'// 'SquidConf')//
-	| 'ssp'// 'Scalate Server Page')//
-	| 'stan'// 'Stan')//
-	| 'stata'// 'Stata')//
-	| "swift"// "Swift")//
-	| 'swig'// 'SWIG')//
-	| 'systemverilog'// 'systemverilog')//
-	| 'tads3'// 'TADS 3')//
-	| 'tap'// 'TAP')//
-	| 'tasm'// 'TASM')//
-	| 'tcl'// 'Tcl')//
-	| 'tcsh'// 'Tcsh')//
-	| 'tcshcon'// 'Tcsh Session')//
-	| 'tea'// 'Tea')//
-	| 'termcap'// 'Termcap')//
-	| 'terminfo'// 'Terminfo')//
-	| 'terraform'// 'Terraform')//
-	| "tex"// "TeX")//
-	| 'text'// 'Text only')//
-	| 'thrift'// 'Thrift')//
-	| 'todotxt'// 'Todotxt')//
-	| 'trac-wiki'// 'MoinMoin/Trac Wiki markup')//
-	| 'treetop'// 'Treetop')//
-	| 'ts'// 'TypeScript')//
-	| 'tsql'// 'Transact-SQL')//
-	| 'turtle'// 'Turtle')//
-	| 'twig'// 'Twig')//
-	| "typoscript"// "TypoScript")//
-	| 'typoscriptcssdata'// 'TypoScriptCssData')//
-	| 'typoscripthtmldata'// 'TypoScriptHtmlData')//
-	| 'urbiscript'// 'UrbiScript')//
-	| 'vala'// 'Vala')//
-	| 'vb.net'// 'VB.net')//
-	| 'vcl'// 'VCL')//
-	| 'vclsnippets'// 'VCLSnippets')//
-	| 'vctreestatus'// 'VCTreeStatus')//
-	| 'velocity'// 'Velocity')//
-	| 'verilog'// 'verilog')//
-	| 'vgl'// 'VGL')//
-	| 'vhdl'// 'vhdl')//
-	| "vim"// "VimL")//
-	| 'wdiff'// 'WDiff')//
-	| 'whiley'// 'Whiley')//
-	| 'x10'// 'X10')//
-	| "xml"// "XML")//
-	| 'xml+cheetah'// 'XML+Cheetah')//
-	| 'xml+django'// 'XML+Django/Jinja')//
-	| 'xml+erb'// 'XML+Ruby')//
-	| 'xml+evoque'// 'XML+Evoque')//
-	| 'xml+lasso'// 'XML+Lasso')//
-	| 'xml+mako'// 'XML+Mako')//
-	| 'xml+myghty'// 'XML+Myghty')//
-	| 'xml+php'// 'XML+PHP')//
-	| 'xml+smarty'// 'XML+Smarty')//
-	| 'xml+velocity'// 'XML+Velocity')//
-	| 'xorg.conf'// 'Xorg')//
-	| 'xquery'// 'XQuery')//
-	| "xslt"// "XSLT")//
-	| 'xtend'// 'Xtend')//
-	| 'xul+mozpreproc'// 'XUL+mozpreproc')//
-	| "yaml"// "YAML")//
-	| 'yaml+jinja'// 'YAML+Jinja')//
-	| 'zephir'// 'Zephir')  export type Lexer
+export type Syntax =
+	| "zig"
+	| "zephir"
+	| "zeek"
+	| "yaml"
+	| "yaml+jinja"
+	| "extempore"
+	| "xtend"
+	| "xslt"
+	| "xorg.conf"
+	| "xml+smarty"
+	| "xml+php"
+	| "xml"
+	| "xml+erb"
+	| "xml+django"
+	| "xquery"
+	| "x10"
+	| "whiley"
+	| "webidl"
+	| "wdiff"
+	| "vim"
+	| "vhdl"
+	| "verilog"
+	| "xml+velocity"
+	| "velocity"
+	| "html+velocity"
+	| "vb.net"
+	| "aspx-vb"
+	| "vala"
+	| "vgl"
+	| "vctreestatus"
+	| "vclsnippets"
+	| "vcl"
+	| "vbscript"
+	| "usd"
+	| "urbiscript"
+	| "unicon"
+	| "ucode"
+	| "typoscript"
+	| "typoscripthtmldata"
+	| "typoscriptcssdata"
+	| "ts"
+	| "twig"
+	| "html+twig"
+	| "turtle"
+	| "treetop"
+	| "tsql"
+	| "todotxt"
+	| "thrift"
+	| "text"
+	| "tex"
+	| "terraform"
+	| "terminfo"
+	| "termcap"
+	| "ttl"
+	| "tea"
+	| "tcshcon"
+	| "tcsh"
+	| "tcl"
+	| "tasm"
+	| "tads3"
+	| "toml"
+	| "tap"
+	| "systemverilog"
+	| "swig"
+	| "swift"
+	| "sc"
+	| "stata"
+	| "stan"
+	| "ssp"
+	| "squidconf"
+	| "sqlite3"
+	| "sql"
+	| "sparql"
+	| "sourceslist"
+	| "sp"
+	| "solidity"
+	| "snowball"
+	| "snobol"
+	| "smarty"
+	| "sgf"
+	| "smalltalk"
+	| "smali"
+	| "slurm"
+	| "slim"
+	| "slash"
+	| "silver"
+	| "sieve"
+	| "shen"
+	| "shexc"
+	| "scss"
+	| "scilab"
+	| "scheme"
+	| "scdoc"
+	| "scaml"
+	| "scala"
+	| "sass"
+	| "sarl"
+	| "sml"
+	| "splus"
+	| "sas"
+	| "rust"
+	| "rb"
+	| "rbcon"
+	| "rts"
+	| "rst"
+	| "rsl"
+	| "rql"
+	| "robotframework"
+	| "roboconf-instances"
+	| "roboconf-graph"
+	| "ride"
+	| "rhtml"
+	| "rexx"
+	| "resource"
+	| "registry"
+	| "redcode"
+	| "red"
+	| "rebol"
+	| "reason"
+	| "rd"
+	| "raw"
+	| "ragel-ruby"
+	| "ragel-objc"
+	| "ragel"
+	| "ragel-java"
+	| "ragel-em"
+	| "ragel-d"
+	| "ragel-cpp"
+	| "ragel-c"
+	| "racket"
+	| "spec"
+	| "rnc"
+	| "rconsole"
+	| "qml"
+	| "qvto"
+	| "qbasic"
+	| "pytb"
+	| "python"
+	| "pycon"
+	| "py2tb"
+	| "python2"
+	| "pypylog"
+	| "puppet"
+	| "pug"
+	| "protobuf"
+	| "properties"
+	| "prolog"
+	| "praat"
+	| "ps1con"
+	| "powershell"
+	| "pov"
+	| "postgresql"
+	| "psql"
+	| "postscript"
+	| "pony"
+	| "plpgsql"
+	| "pkgconfig"
+	| "pike"
+	| "pig"
+	| "php"
+	| "perl"
+	| "perl6"
+	| "peg"
+	| "pawn"
+	| "parasail"
+	| "pan"
+	| "pacmanconf"
+	| "openedge"
+	| "opa"
+	| "ooc"
+	| "odin"
+	| "octave"
+	| "ocaml"
+	| "objective-j"
+	| "objective-c++"
+	| "objective-c"
+	| "objdump"
+	| "numpy"
+	| "nusmv"
+	| "notmuch"
+	| "nixos"
+	| "nit"
+	| "nim"
+	| "nginx"
+	| "newspeak"
+	| "newlisp"
+	| "nesc"
+	| "nemerle"
+	| "objdump-nasm"
+	| "nasm"
+	| "nsis"
+	| "ncl"
+	| "xml+myghty"
+	| "myghty"
+	| "js+myghty"
+	| "html+myghty"
+	| "css+myghty"
+	| "mysql"
+	| "mxml"
+	| "mupad"
+	| "mscgen"
+	| "mql"
+	| "xul+mozpreproc"
+	| "mozpercentpreproc"
+	| "javascript+mozpreproc"
+	| "mozhashpreproc"
+	| "css+mozpreproc"
+	| "mosel"
+	| "moon"
+	| "monte"
+	| "monkey"
+	| "trac-wiki"
+	| "modula2"
+	| "modelica"
+	| "ms"
+	| "minid"
+	| "matlabsession"
+	| "matlab"
+	| "mathematica"
+	| "mason"
+	| "mask"
+	| "md"
+	| "maql"
+	| "xml+mako"
+	| "mako"
+	| "js+mako"
+	| "html+mako"
+	| "css+mako"
+	| "make"
+	| "doscon"
+	| "moocode"
+	| "mime"
+	| "lua"
+	| "logtalk"
+	| "logos"
+	| "llvm-mir"
+	| "llvm-mir-body"
+	| "llvm"
+	| "live-script"
+	| "lidr"
+	| "lhs"
+	| "lcry"
+	| "lagda"
+	| "liquid"
+	| "limbo"
+	| "lighty"
+	| "less"
+	| "lean"
+	| "xml+lasso"
+	| "lasso"
+	| "js+lasso"
+	| "html+lasso"
+	| "css+lasso"
+	| "lsl"
+	| "kotlin"
+	| "koka"
+	| "kmsg"
+	| "kconfig"
+	| "kal"
+	| "juttle"
+	| "julia"
+	| "jlcon"
+	| "jsp"
+	| "json"
+	| "jsonld"
+	| "json-object"
+	| "jsgf"
+	| "jcl"
+	| "js+smarty"
+	| "js+php"
+	| "js"
+	| "js+genshitext"
+	| "js+erb"
+	| "js+django"
+	| "java"
+	| "jasmin"
+	| "jags"
+	| "j"
+	| "isabelle"
+	| "irc"
+	| "ioke"
+	| "io"
+	| "ini"
+	| "inform7"
+	| "i6t"
+	| "inform6"
+	| "igor"
+	| "idris"
+	| "icon"
+	| "idl"
+	| "hybris"
+	| "hylang"
+	| "haxeml"
+	| "http"
+	| "html+smarty"
+	| "html+php"
+	| "html"
+	| "html+genshi"
+	| "html+django"
+	| "hspec"
+	| "hsail"
+	| "hexdump"
+	| "hx"
+	| "haskell"
+	| "handlebars"
+	| "html+handlebars"
+	| "haml"
+	| "hlsl"
+	| "groovy"
+	| "groff"
+	| "gst"
+	| "gosu"
+	| "gooddata-cl"
+	| "golo"
+	| "go"
+	| "gnuplot"
+	| "cucumber"
+	| "pot"
+	| "genshitext"
+	| "genshi"
+	| "gas"
+	| "glsl"
+	| "gap"
+	| "freefem"
+	| "foxpro"
+	| "fortran"
+	| "fortranfixed"
+	| "forth"
+	| "floscript"
+	| "flatline"
+	| "fish"
+	| "fennel"
+	| "felix"
+	| "fan"
+	| "fancy"
+	| "factor"
+	| "fsharp"
+	| "ezhil"
+	| "xml+evoque"
+	| "evoque"
+	| "html+evoque"
+	| "erl"
+	| "erlang"
+	| "erb"
+	| "email"
+	| "emacs"
+	| "elm"
+	| "elixir"
+	| "iex"
+	| "eiffel"
+	| "ebnf"
+	| "easytrieve"
+	| "earl-grey"
+	| "ec"
+	| "ecl"
+	| "dylan-lid"
+	| "dylan"
+	| "dylan-console"
+	| "duel"
+	| "dtd"
+	| "docker"
+	| "django"
+	| "diff"
+	| "dg"
+	| "delphi"
+	| "control"
+	| "dasm16"
+	| "dart"
+	| "dpatch"
+	| "d-objdump"
+	| "d"
+	| "cython"
+	| "cypher"
+	| "cuda"
+	| "css+smarty"
+	| "css+php"
+	| "css"
+	| "css+genshitext"
+	| "css+erb"
+	| "css+django"
+	| "csound-score"
+	| "csound"
+	| "csound-document"
+	| "cr"
+	| "cryptol"
+	| "croc"
+	| "crmsh"
+	| "cpp-objdump"
+	| "cpp"
+	| "coq"
+	| "componentpascal"
+	| "common-lisp"
+	| "cfs"
+	| "cfm"
+	| "cfc"
+	| "coffee-script"
+	| "cobol"
+	| "cobolfree"
+	| "clojurescript"
+	| "clojure"
+	| "clean"
+	| "clay"
+	| "cirru"
+	| "xml+cheetah"
+	| "cheetah"
+	| "js+cheetah"
+	| "html+cheetah"
+	| "charmci"
+	| "chapel"
+	| "chai"
+	| "cfengine3"
+	| "ceylon"
+	| "cbmbas"
+	| "capnp"
+	| "capdl"
+	| "cadl"
+	| "ca65"
+	| "csharp"
+	| "aspx-cs"
+	| "cpsa"
+	| "c-objdump"
+	| "cmake"
+	| "c"
+	| "camkes"
+	| "bugs"
+	| "brainfuck"
+	| "boogie"
+	| "boo"
+	| "boa"
+	| "bnf"
+	| "blitzmax"
+	| "blitzbasic"
+	| "bib"
+	| "befunge"
+	| "bat"
+	| "console"
+	| "bash"
+	| "basemake"
+	| "bst"
+	| "bc"
+	| "bbcode"
+	| "bbcbasic"
+	| "awk"
+	| "ahk"
+	| "autoit"
+	| "augeas"
+	| "asy"
+	| "aspectj"
+	| "arduino"
+	| "applescript"
+	| "apacheconf"
+	| "antlr-ruby"
+	| "antlr-python"
+	| "antlr-perl"
+	| "antlr-objc"
+	| "antlr"
+	| "antlr-java"
+	| "antlr-cpp"
+	| "antlr-csharp"
+	| "antlr-as"
+	| "ng2"
+	| "html+ng2"
+	| "ampl"
+	| "at"
+	| "alloy"
+	| "aheui"
+	| "agda"
+	| "adl"
+	| "ada"
+	| "as"
+	| "as3"
+	| "abnf"
+	| "apl"
+	| "abap";
 
-export type Expires = 'onetime' | 'never' | '3600' | '604800' | '2592000'
-
-export type PasteFormat =
-	{
-		url: String,
-		lexer: Lexer,
-		content: String
-	} | String
+export type Expiry_Days = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 | 64 | 65 | 66 | 67 | 68 | 69 | 70 | 71 | 72 | 73 | 74 | 75 | 76 | 77 | 78 | 79 | 80 | 81 | 82 | 83 | 84 | 85 | 86 | 87 | 88 | 89 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97 | 98 | 99 | 100 | 101 | 102 | 103 | 104 | 105 | 106 | 107 | 108 | 109 | 110 | 111 | 112 | 113 | 114 | 115 | 116 | 117 | 118 | 119 | 120 | 121 | 122 | 123 | 124 | 125 | 126 | 127 | 128 | 129 | 130 | 131 | 132 | 133 | 134 | 135 | 136 | 137 | 138 | 139 | 140 | 141 | 142 | 143 | 144 | 145 | 146 | 147 | 148 | 149 | 150 | 151 | 152 | 153 | 154 | 155 | 156 | 157 | 158 | 159 | 160 | 161 | 162 | 163 | 164 | 165 | 166 | 167 | 168 | 169 | 170 | 171 | 172 | 173 | 174 | 175 | 176 | 177 | 178 | 179 | 180 | 181 | 182 | 183 | 184 | 185 | 186 | 187 | 188 | 189 | 190 | 191 | 192 | 193 | 194 | 195 | 196 | 197 | 198 | 199 | 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 209 | 210 | 211 | 212 | 213 | 214 | 215 | 216 | 217 | 218 | 219 | 220 | 221 | 222 | 223 | 224 | 225 | 226 | 227 | 228 | 229 | 230 | 231 | 232 | 233 | 234 | 235 | 236 | 237 | 238 | 239 | 240 | 241 | 242 | 243 | 244 | 245 | 246 | 247 | 248 | 249 | 250 | 251 | 252 | 253 | 254 | 255 | 256 | 257 | 258 | 259 | 260 | 261 | 262 | 263 | 264 | 265 | 266 | 267 | 268 | 269 | 270 | 271 | 272 | 273 | 274 | 275 | 276 | 277 | 278 | 279 | 280 | 281 | 282 | 283 | 284 | 285 | 286 | 287 | 288 | 289 | 290 | 291 | 292 | 293 | 294 | 295 | 296 | 297 | 298 | 299 | 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308 | 309 | 310 | 311 | 312 | 313 | 314 | 315 | 316 | 317 | 318 | 319 | 320 | 321 | 322 | 323 | 324 | 325 | 326 | 327 | 328 | 329 | 330 | 331 | 332 | 333 | 334 | 335 | 336 | 337 | 338 | 339 | 340 | 341 | 342 | 343 | 344 | 345 | 346 | 347 | 348 | 349 | 350 | 351 | 352 | 353 | 354 | 355 | 356 | 357 | 358 | 359 | 360 | 361 | 362 | 363 | 364 | 365
