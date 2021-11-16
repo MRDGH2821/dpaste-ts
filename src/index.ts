@@ -49,7 +49,7 @@ function isValidExpiry(days: number): boolean {
 * @param {Expiry_Days} expiry_days - Expiry duration of the paste
 * @returns {Promise<string>}
 */
-export async function CreatePaste(content: string, filename: string, syntax: Syntax = 'text', expiry_days: Expiry_Days = 7): Promise<string> {
+export async function CreatePaste(content: string, filename: string = new Date().toUTCString(), syntax: Syntax = 'text', expiry_days: Expiry_Days = 7): Promise<string> {
 	delay(1000);
 	try {
 		if (isValidSize(content) && isValidSyntax(syntax) && isValidExpiry(expiry_days)) {
@@ -84,11 +84,11 @@ export async function CreatePaste(content: string, filename: string, syntax: Syn
 /**
 * Gets Paste from dpaste.org
 * @async
-* @function GetPaste
+* @function GetRawPaste
 * @param {string} url - The dpaste url
 * @returns {Promise<string>}
 */
-export async function GetPaste(url: string): Promise<string> {
+export async function GetRawPaste(url: string): Promise<string> {
 	delay(1000);
 	if (!/https:\/\/dpaste.com\//gm.test(url)) {
 		url = `https://dpaste.com/${url}`
