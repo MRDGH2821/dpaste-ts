@@ -90,6 +90,9 @@ export async function CreatePaste(content: string, filename: string, syntax: Syn
 */
 export async function GetPaste(url: string): Promise<String> {
 	delay(1000);
+	if (!/https:\/\/dpaste.com\//gm.text(url)){
+		url=`https://dpaste.com/${url}`
+	}
 	try {
 		const { data } = await axios.get(`${url}.txt`);
 		return (data);
