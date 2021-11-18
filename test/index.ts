@@ -1,10 +1,17 @@
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
 import * as paste from "../src";
+var fs = require("fs");
 
-//var fs = require("fs");
-
-//const data250kb = fs.readFile('./250KB.txt');
+let data260kb: string;
+//let data260kbsize: number;
+fs.readFile("./test/260KB.txt", function(err: string, data: string) {
+  if (err) {
+    return console.error(err);
+  }
+  data260kb = data.toString();
+  //  data260kbsize = Buffer.byteLength(data260kb);
+});
 
 const API = suite("exports");
 
@@ -23,6 +30,13 @@ const create = suite("create");
 create("Should create a paste & return String", async () => {
   assert.type(await paste.CreatePaste(data, title), "string");
 });
+
+create(
+  "Should throw error when content is greater than 250,000 bytes",
+  async () => {
+    assert.throws(async () => await paste.CreatePaste(data260kb));
+  }
+);
 
 create.run();
 
