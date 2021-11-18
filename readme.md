@@ -7,7 +7,7 @@ Creates & Gets pastes anonymously.
 
 ## Usage
 
-The functions are promise based.
+The functions are promise based. Use them inside `async` functions or you may also use ``.then().catch()``
 
 ### Import
 
@@ -15,7 +15,7 @@ The functions are promise based.
 const { CreatePaste, GetRawPaste } = require("dpaste-js");
 ```
 
-#### Create Paste
+### Create Paste
 
 Returns URL of dpaste.
 
@@ -28,19 +28,26 @@ There are 4 arguments:
 | syntax      | string | [Check here](https://dpaste.com/api/v2/syntax-choices/) | `'text'`                             | `false`   |
 | expiry_days | number | `1` to `365`                                            | `7`                                  | `false`   |
 
+
+When inside async function:
 ```js
 let source = "sample input";
 let title = "sample day";
 let syntax = "text";
 let expire = 1;
-let url;
-CreatePaste(source, title, syntax, expire).then(link => {
-  url = link;
-  console.log(url);
-}).catch(console.log); //will return dpaste link when successful, else error
+
+//Will return dpaste link when successful
+let url = await CreatePaste(source, title, syntax, expire);
+console.log(url);
 ```
 
-#### Get Raw Paste
+Using `.then().catch()`
+```js
+//Will return dpaste link to console
+CreatePaste(source, title, syntax, expire).then(console.log).catch(console.log);
+```
+
+### Get Raw Paste
 
 Returns Raw data of dpaste.
 
@@ -52,8 +59,18 @@ There is 1 argument:
 
 You can either provide complete URL of the dpaste or the ID of the paste.
 
+
+When inside async function:
 ```js
-GetRawPaste(url).then(console.log); //Will return "sample input" as raw data
+//Will return "sample input" as raw data
+let rawData = await GetRawPaste(url)
+console.log(rawData);
+```
+
+Using `.then().catch()`
+```js
+//Will return raw data to console
+GetRawPaste(url).then(console.log).catch(console.log);
 ```
 
 ### Complete example
@@ -65,13 +82,26 @@ let source = "sample input";
 let title = "sample title";
 let syntax = "text";
 let expire = 1;
-let url;
-CreatePaste(source, title, syntax, expire).then(link => {
-  url = link;
-  console.log(url);
-}).catch(console.log); //will return dpaste link when successful, else error
 
-GetRawPaste(url).then(console.log); //Will return "sample input" as raw data
+
+//Use the below code snippet inside async functions to get the data.
+
+//Will return dpaste link when successful
+let url = await CreatePaste(source, title, syntax, expire)
+console.log(url);
+
+//Will return "sample input" as raw data
+let rawData = await GetRawPaste(url)
+console.log(rawData);
+
+
+//Use the below snippets if you wish to use .then().catch()
+
+//Will return dpaste link to console
+CreatePaste(source, title, syntax, expire).then(console.log).catch(console.log);
+
+//Will return raw data to console
+GetRawPaste(url).then(console.log).catch(console.log);
 ```
 
 ## Licence
