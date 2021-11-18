@@ -6,7 +6,7 @@ function delay(n: number): any {
   n = n || 1000;
   return new Promise(done => {
     setTimeout(() => {
-      done();
+      done(1);
     }, n);
   });
 }
@@ -28,6 +28,7 @@ export async function CreatePaste(
   expiry_days: Expiry_Days = 7
 ): Promise<string> {
   delay(1000);
+
   try {
     if (
       isValidSize(content) &&
@@ -65,7 +66,7 @@ export async function CreatePaste(
       }
     }
   } catch (error) {
-    return error;
+    return String(error);
   }
 }
 
