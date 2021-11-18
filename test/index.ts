@@ -1,34 +1,36 @@
-import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
-import * as paste from '../src';
-//import { PasteFormat } from '../lib/Interfaces'
+import { suite } from "uvu";
+import * as assert from "uvu/assert";
+import * as paste from "../src";
 
-const API = suite('exports');
+//var fs = require("fs");
 
-API('should export an object', () => {
-	assert.type(paste, 'object');
+//const data250kb = fs.readFile('./250KB.txt');
+
+const API = suite("exports");
+
+API("should export an object", () => {
+  assert.type(paste, "object");
 });
 
 API.run();
-const data = 'Some sample data for testing dpaste module using uvu';
-const title = 'Dpaste Module Test';
+const data = "Some sample data for testing dpaste module using uvu";
+const title = "Dpaste Module Test";
 
 let url = paste.CreatePaste(data, title);
 
-const create = suite('create');
+const create = suite("create");
 
-create('Should create a paste & return String', async () => {
-	assert.type(await paste.CreatePaste(data, title), 'string');
-})
+create("Should create a paste & return String", async () => {
+  assert.type(await paste.CreatePaste(data, title), "string");
+});
 
 create.run();
 
-const get = suite('get');
+const get = suite("get");
 
-
-get('Should get a paste & return String', async () => {
-	assert.type(await paste.GetRawPaste(await url), 'string');
-})
+get("Should get a paste & return String", async () => {
+  assert.type(await paste.GetRawPaste(await url), "string");
+});
 
 get.run();
 
