@@ -482,11 +482,7 @@ let syntaxes = [
  * @returns {boolean}
  */
 export function isValidSize(data: string): boolean {
-  if (Buffer.byteLength(data) < 250000) {
-    return true;
-  } else {
-    return false;
-  }
+  return Buffer.byteLength(data) < 250000;
 }
 
 /**
@@ -496,11 +492,7 @@ export function isValidSize(data: string): boolean {
  * @returns {boolean}
  */
 export function isValidSyntax(syntax: string): boolean {
-  if (syntaxes.includes(syntax)) {
-    return true;
-  } else {
-    return false;
-  }
+  return syntaxes.includes(syntax);
 }
 
 /**
@@ -510,9 +502,5 @@ export function isValidSyntax(syntax: string): boolean {
  * @returns {boolean}
  */
 export function isValidExpiry(days: number): boolean {
-  if (days >= 1 && days <= 365) {
-    return true;
-  } else {
-    return false;
-  }
+  return days >= 1 && days <= 365;
 }
