@@ -7,7 +7,8 @@ Creates & Gets pastes anonymously.
 
 ## Usage
 
-The functions are promise based. Use them inside `async` functions or you may also use ``.then().catch()``
+The functions are promise based. Use them inside `async` functions or you may also use ``.then().catch()``.
+All functions have an internal delay of 1 second. This is to prevent abuse of [dpaste.com API](https://dpaste.com/api/v2/)
 
 ### Import
 
