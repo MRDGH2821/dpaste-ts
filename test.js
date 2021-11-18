@@ -1,4 +1,4 @@
-const { CreatePaste, GetPaste } = require("dpaste-js");
+const { CreatePaste, GetPaste } = require("dpaste-ts");
 
 const data =
 	"Some sample data for testing dpaste module in plain text using axios. Now with proper error handling";

@@ -37,7 +37,7 @@
     "test": "uvu -r ts-node/register test",
     "mytest": "node test.js ",
     "prepublish": "npm run build",
-    "premytest": "yalc publish && yalc link dpaste-js",
+    "premytest": "yalc publish && yalc link dpaste-ts",
     "tsc-init": " cd node_modules/.bin/ && tsc --init"
   },
   "bugs": {
