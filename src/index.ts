@@ -72,7 +72,7 @@ export async function GetRawPaste(url: string): Promise<string> {
   return await axios
     .get(`${url}.txt`)
     .then(function(response: any) {
-      return response.data;
+      return String(response.data);
     })
     .catch(function(error: any) {
       const err = error.toJSON();
