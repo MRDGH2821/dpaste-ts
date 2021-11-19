@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm/dpaste-ts.png)](https://npmjs.org/package/dpaste-ts)
 
-Nodejs wrapper for [dpaste.com](https://dpaste.com/) using TypeScript.
+Nodejs wrapper for [dpaste.com](https://dpaste.com/) written using Typescript.
 Creates & Gets pastes anonymously.
 
 ## Usage
