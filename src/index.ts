@@ -1,6 +1,5 @@
 const axios = require("axios").default;
 import { Syntax, Expiry_Days } from "../lib/Interfaces";
-import { isValidSize, isValidExpiry, isValidSyntax } from "../lib/Checkers";
 
 function delay(n: number): any {
   n = n || 1000;
@@ -10,7 +9,7 @@ function delay(n: number): any {
     }, n);
   });
 }
-//const form = new FormData();
+
 /**
  * Creates Paste on dpaste.org
  * @async
@@ -28,46 +27,26 @@ export async function CreatePaste(
   expiry_days: Expiry_Days = 7
 ): Promise<string> {
   delay(1000);
-
-  try {
-    if (
-      isValidSize(content) &&
-      isValidSyntax(syntax) &&
-      isValidExpiry(expiry_days)
-    ) {
-      const { data } = await axios({
-        url: "https://dpaste.com/api/v2/",
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        data:
-          "content=" +
-          encodeURIComponent(content) +
-          "&syntax=" +
-          encodeURIComponent(syntax) +
-          "&title=" +
-          encodeURIComponent(filename) +
-          "&expiry_days" +
-          encodeURIComponent(expiry_days)
-      });
-      return data;
-    } else {
-      if (isValidSize(content)) {
-        throw `Maximum allowed content size is 250,000 bytes. Content Size: ${Buffer.byteLength(
-          content
-        )} bytes`;
-      } else if (isValidSyntax(syntax)) {
-        throw `Syntax must be from https://dpaste.com/api/v2/syntax-choices/. Given Syntax: ${syntax}`;
-      } else if (isValidExpiry(expiry_days)) {
-        throw `Expiry days must be greater than 1 day & not exceed 365 days. Given Days: ${expiry_days}`;
-      } else {
-        throw `Some unknown error. Probably Rate Limit. Inputs are valid & within range, problem might be in backend.\nContent Size: ${
-          new Blob([content]).size
-        } bytes.\nGiven Syntax: "${syntax}".\nGiven Days: ${expiry_days}`;
-      }
-    }
-  } catch (error) {
-    return String(error);
-  }
+  return await axios({
+    url: "https://dpaste.com/api/v2/",
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    data:
+      "content=" +
+      encodeURIComponent(content) +
+      "&syntax=" +
+      encodeURIComponent(syntax) +
+      "&title=" +
+      encodeURIComponent(filename) +
+      "&expiry_days" +
+      encodeURIComponent(expiry_days)
+  })
+    .then(function(response: any) {
+      return response.data;
+    })
+    .catch(function(error: any) {
+      return error.response.data;
+    });
 }
 
 /**
@@ -78,14 +57,21 @@ export async function CreatePaste(
  * @returns {Promise<string>}
  */
 export async function GetRawPaste(url: string): Promise<string> {
-  delay(1000);
   if (!/https:\/\/dpaste.com\//gm.test(url)) {
     url = `https://dpaste.com/${url}`;
+  } else if (/\n/.test(url)) {
+    url = url.slice(0, url.length - 1);
   }
-  try {
-    const { data } = await axios.get(`${url}.txt`);
-    return data;
-  } catch (error) {
-    return "Invalid Link";
-  }
+  delay(1000);
+  return await axios
+    .get(`${url}.txt`)
+    .then(function(response: any) {
+      return response.data;
+    })
+    .catch(function(error: any) {
+      const err = error.toJSON();
+      //  return `Error:\n${err.message}`
+      //console.log(url);
+      return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
+    });
 }
