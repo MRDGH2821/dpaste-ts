@@ -38,7 +38,8 @@
     "mytest": "node test.js ",
     "prepublish": "npm run build",
     "premytest": "yalc publish && yalc link dpaste-ts",
-    "tsc-init": " cd node_modules/.bin/ && tsc --init"
+    "tsc-init": " cd node_modules/.bin/ && tsc --init",
+    "postmytest": "yalc remove --all && yalc installations clean dpaste-ts"
   },
   "bugs": {
     "url": "https://github.com/MRDGH2821/dpaste-js/issues"
