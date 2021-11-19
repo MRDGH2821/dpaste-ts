@@ -840,12 +840,3 @@ export type Expiry_Days =
   | 363
   | 364
   | 365;
-
-export type Response = {
-  data: object;
-  status: 200;
-  statusText: string;
-  headers: object;
-  config: object;
-  request: object;
-};
