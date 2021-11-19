@@ -70,8 +70,6 @@ export async function GetRawPaste(url: string): Promise<string> {
     })
     .catch(function(error: any) {
       const err = error.toJSON();
-      //  return `Error:\n${err.message}`
-      //console.log(url);
       return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
     });
 }
