@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add scraping functionality which will include Title, Syntax, Expiry date & other relevant properties along with Raw data.
 
+## [1.0.2] - 2021-11-19
+
+### Added
+
+- Added Github Sponsors config
+
+### Changed
+
+- Changed Description
+
 ## [1.0.1] - 2021-11-19
 
 ### Removed
