@@ -1,6 +1,12 @@
 const axios = require("axios").default;
 import { Syntax, Expiry_Days } from "../lib/Interfaces";
 
+/** Delays Function execution
+ * @function delay
+ * @param {number} n - Delay in miliseconds
+ * @returns {Promise<any>} Promise object which does nothing for given miliseconds
+ */
+
 function delay(n: number): any {
   n = n || 1000;
   return new Promise(done => {
@@ -18,7 +24,7 @@ function delay(n: number): any {
  * @param {string} filename - The title for Paste
  * @param {Syntax} syntax - Paste encoding
  * @param {Expiry_Days} expiry_days - Expiry duration of the paste
- * @returns {Promise<string>}
+ * @returns {Promise<string>} - URL of Paste
  */
 export async function CreatePaste(
   content: string,
@@ -54,7 +60,7 @@ export async function CreatePaste(
  * @async
  * @function GetRawPaste
  * @param {string} url - The dpaste url
- * @returns {Promise<string>}
+ * @returns {Promise<string>} - Raw data from paste
  */
 export async function GetRawPaste(url: string): Promise<string> {
   if (!/https:\/\/dpaste.com\//gm.test(url)) {
