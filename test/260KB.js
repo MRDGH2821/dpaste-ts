@@ -1,4 +1,4 @@
-
+module.export = const Data260kb = `
 Հայերեն Shqip ‫العربية Български Català 中文简体 Hrvatski Česky Dansk Nederlands English Eesti Filipino Suomi Français ქართული Deutsch Ελληνικά ‫עברית हिन्दी Magyar Indonesia Italiano Latviski Lietuviškai македонски Melayu Norsk Polski Português Româna Pyccкий Српски Slovenčina Slovenščina Español Svenska ไทย Türkçe Українська Tiếng Việt
 Lorem Ipsum
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
@@ -914,3 +914,4 @@ Donec scelerisque pulvinar lorem a luctus. Nunc id commodo enim, quis tempus ex.
 Generated 18 paragraphs, 1485 words, 10000 bytes of Lorem Ipsum
 help@lipsum.com
 Privacy Policy
+`;
