@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Fixed
 
 - Fixed Interfaces.ts not getting imported.
-  Basically now it resides with main code, should get imported properly.
 
 ## [1.0.2] - 2021-11-19
 
