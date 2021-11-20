@@ -1,27 +1,34 @@
 {
-  "version": "1.0.4",
   "name": "dpaste-ts",
   "umd:name": "dpaste-ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MRDGH2821/dpaste-js.git"
-  },
-  "homepage": "https://github.com/MRDGH2821/dpaste-js",
+  "version": "1.0.4",
   "description": "Nodejs wrapper for dpaste.com written using Typescript",
-  "unpkg": "dist/index.min.js",
-  "module": "dist/index.mjs",
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
+  "keywords": ["dpaste", "pastebin", "wrapper"],
+  "homepage": "https://github.com/MRDGH2821/dpaste-js#readme",
+  "bugs": {
+    "url": "https://github.com/MRDGH2821/dpaste-js/issues"
+  },
   "license": "MIT",
   "author": {
     "name": "MRDGH2821",
     "url": "https://bit.ly/mrdgh2821"
   },
-  "files": [
-    "dist",
-    "types",
-    "lib"
-  ],
+  "contributors": {
+    "name": "MRDGH2821"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://ko-fi.com/mrdgh2821"
+  },
+  "files": ["dist", "types"],
+  "unpkg": "dist/index.min.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRDGH2821/dpaste-js.git"
+  },
+  "types": "types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -43,14 +50,9 @@
     "postmytest": "yalc remove --all && yalc installations clean dpaste-ts",
     "patchpub": "npm version patch && git push origin master --tags && npm publish"
   },
-  "bugs": {
-    "url": "https://github.com/MRDGH2821/dpaste-js/issues"
+  "dependencies": {
+    "axios": "^0.24.0"
   },
-  "keywords": [
-    "dpaste",
-    "pastebin",
-    "wrapper"
-  ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/axios": "^0.14.0",
@@ -65,9 +67,5 @@
     "typescript": "^4.5.2",
     "uvu": "^0.5.2",
     "yalc": "^1.0.0-pre.53"
-  },
-  "dependencies": {
-    "axios": "^0.24.0"
-  },
-  "contributers": {}
+  }
 }
