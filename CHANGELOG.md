@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add scraping functionality which will include Title, Syntax, Expiry date & other relevant properties along with Raw data.
 
+## [1.0.4] - 2021-11-20
+
+## Fixed
+
+- Moved interfaces.ts to index.ts.
+  Should fix the TSlinter problems.
+
 ## [1.0.3] - 2021-11-19
 
 ## Fixed
