@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-import { Syntax, Expiry_Days } from "../lib/Interfaces";
+import { Syntax, Expiry_Days } from "./interfaces";
 
 /** Delays Function execution
  * @function delay
@@ -79,3 +79,4 @@ export async function GetRawPaste(url: string): Promise<string> {
       return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
     });
 }
+export * from "./interfaces";
