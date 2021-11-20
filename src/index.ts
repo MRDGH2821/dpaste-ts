@@ -26,7 +26,7 @@ function delay(n: number): any {
  * @param {Expiry_Days} expiry_days - Expiry duration of the paste
  * @returns {Promise<string>} - URL of Paste
  */
-async function CreatePaste(
+export async function CreatePaste(
   content: string,
   filename: string = new Date().toUTCString(),
   syntax: Syntax = "text",
@@ -62,7 +62,7 @@ async function CreatePaste(
  * @param {string} url - The dpaste url
  * @returns {Promise<string>} - Raw data from paste
  */
-async function GetRawPaste(url: string): Promise<string> {
+export async function GetRawPaste(url: string): Promise<string> {
   if (!/https:\/\/dpaste.com\//gm.test(url)) {
     url = `https://dpaste.com/${url}`;
   } else if (/\n/.test(url)) {
@@ -79,9 +79,4 @@ async function GetRawPaste(url: string): Promise<string> {
       return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
     });
 }
-
-export default {
-  CreatePaste,
-  GetRawPaste
-};
 export * from "./interfaces";
