@@ -16,7 +16,7 @@ All functions have an internal delay of 1 second. This is to prevent abuse of [d
 ### Import
 
 ```js
-const { CreatePaste, GetRawPaste } = require("dpaste-js");
+const { CreatePaste, GetRawPaste } = require('dpaste-js');
 ```
 
 ### Create Paste
@@ -35,9 +35,9 @@ There are 4 arguments:
 When inside async function:
 
 ```js
-let source = "sample input";
-let title = "sample day";
-let syntax = "text";
+let source = 'sample input';
+let title = 'sample day';
+let syntax = 'text';
 let expire = 1;
 
 //Will return dpaste link when successful
@@ -86,11 +86,11 @@ GetRawPaste(url)
 ### Complete example
 
 ```js
-const { CreatePaste, GetRawPaste } = require("dpaste-js");
+const { CreatePaste, GetRawPaste } = require('dpaste-js');
 
-let source = "sample input";
-let title = "sample title";
-let syntax = "text";
+let source = 'sample input';
+let title = 'sample title';
+let syntax = 'text';
 let expire = 1;
 
 //Use the below code snippet inside async functions to get the data.
