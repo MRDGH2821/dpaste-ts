@@ -8,7 +8,8 @@
     "megalinter",
     "package-lock.json",
     "report",
-    "./test/2MB.js"
+    "./test/2MB.js",
+    "**/test/2MB.js"
   ],
   "language": "en",
   "noConfigSearch": true,
