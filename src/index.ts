@@ -8,8 +8,7 @@ const axios = require('axios').default;
  * @returns {Promise<any>} Promise object which does nothing for given miliseconds
  */
 
-function delay(n: number): any {
-  n = n || 1000;
+function delay(n = 1000): any {
   return new Promise((done) => {
     setTimeout(() => {
       done(1);
@@ -34,7 +33,7 @@ export async function CreatePaste(
   expiry_days: Expiry_Days = 7,
 ): Promise<string> {
   delay(1000);
-  return await axios({
+  return axios({
     url: 'https://dpaste.com/api/v2/',
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -54,14 +53,15 @@ export async function CreatePaste(
  * @returns {Promise<string>} - Raw data from paste
  */
 export async function GetRawPaste(url: string): Promise<string> {
+  let newURL = url;
   if (!/https:\/\/dpaste.com\//gm.test(url)) {
-    url = `https://dpaste.com/${url}`;
+    newURL = `https://dpaste.com/${url}`;
   } else if (/\n/.test(url)) {
-    url = url.slice(0, url.length - 1);
+    newURL = url.slice(0, url.length - 1);
   }
   delay(1000);
-  return await axios
-    .get(`${url}.txt`)
+  return axios
+    .get(`${newURL}.txt`)
     .then((response: any) => String(response.data))
     .catch((error: any) => {
       const err = error.toJSON();
