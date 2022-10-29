@@ -18,11 +18,11 @@ TYPESCRIPT_DEFAULT_STYLE: prettier
 LINTER_RULES_PATH: .
 PRINT_ALPACA: false
 PRE_COMMANDS:
-  - command: "npm ci"
-    cwd: "workspace"
+  - command: 'npm ci'
+    cwd: 'workspace'
 POST_COMMANDS:
-  - command: "npm run pretty"
-    cwd: "workspace"
+  - command: 'npm run pretty'
+    cwd: 'workspace'
 IGNORE_GITIGNORED_FILES: true
 # Excludes cspell file itself
 SPELL_MISSPELL_FILTER_REGEX_EXCLUDE: cspell.

@@ -12,15 +12,6 @@
   ],
   "language": "en",
   "noConfigSearch": true,
-  "words": [
-    "dpaste",
-    "megalinter",
-    "mrdgh",
-    "mytest",
-    "oxsecurity",
-    "pastebin",
-    "zeek",
-    "zephir"
-  ],
+  "words": ["dpaste", "megalinter", "mrdgh", "mytest", "oxsecurity", "pastebin", "zeek", "zephir"],
   "version": "0.2"
 }

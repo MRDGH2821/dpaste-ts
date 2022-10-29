@@ -1,5 +1,6 @@
-const axios = require("axios").default;
-import { Syntax, Expiry_Days } from "./interfaces";
+import { Syntax, Expiry_Days } from './interfaces';
+
+const axios = require('axios').default;
 
 /** Delays Function execution
  * @function delay
@@ -9,7 +10,7 @@ import { Syntax, Expiry_Days } from "./interfaces";
 
 function delay(n: number): any {
   n = n || 1000;
-  return new Promise(done => {
+  return new Promise((done) => {
     setTimeout(() => {
       done(1);
     }, n);
@@ -29,30 +30,20 @@ function delay(n: number): any {
 export async function CreatePaste(
   content: string,
   filename: string = new Date().toUTCString(),
-  syntax: Syntax = "text",
-  expiry_days: Expiry_Days = 7
+  syntax: Syntax = 'text',
+  expiry_days: Expiry_Days = 7,
 ): Promise<string> {
   delay(1000);
   return await axios({
-    url: "https://dpaste.com/api/v2/",
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    data:
-      "content=" +
-      encodeURIComponent(content) +
-      "&syntax=" +
-      encodeURIComponent(syntax) +
-      "&title=" +
-      encodeURIComponent(filename) +
-      "&expiry_days" +
-      encodeURIComponent(expiry_days)
+    url: 'https://dpaste.com/api/v2/',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    data: `content=${encodeURIComponent(content)}&syntax=${encodeURIComponent(
+      syntax,
+    )}&title=${encodeURIComponent(filename)}&expiry_days${encodeURIComponent(expiry_days)}`,
   })
-    .then(function(response: any) {
-      return response.data;
-    })
-    .catch(function(error: any) {
-      return error.response.data;
-    });
+    .then((response: any) => response.data)
+    .catch((error: any) => error.response.data);
 }
 
 /**
@@ -71,12 +62,10 @@ export async function GetRawPaste(url: string): Promise<string> {
   delay(1000);
   return await axios
     .get(`${url}.txt`)
-    .then(function(response: any) {
-      return String(response.data);
-    })
-    .catch(function(error: any) {
+    .then((response: any) => String(response.data))
+    .catch((error: any) => {
       const err = error.toJSON();
       return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
     });
 }
-export * from "./interfaces";
+export * from './interfaces';
