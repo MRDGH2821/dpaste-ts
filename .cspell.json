@@ -7,10 +7,20 @@
     ".vscode",
     "megalinter",
     "package-lock.json",
-    "report"
+    "report",
+    "./test/2MB.js"
   ],
   "language": "en",
   "noConfigSearch": true,
-  "words": ["megalinter", "oxsecurity"],
+  "words": [
+    "dpaste",
+    "megalinter",
+    "mrdgh",
+    "mytest",
+    "oxsecurity",
+    "pastebin",
+    "zeek",
+    "zephir"
+  ],
   "version": "0.2"
 }
