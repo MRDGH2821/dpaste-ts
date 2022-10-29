@@ -11,7 +11,7 @@
     "./test/2MB.js",
     "**/test/2MB.js"
   ],
-  "language": "en",
+  "language": "en-GB",
   "noConfigSearch": true,
   "words": ["dpaste", "megalinter", "mrdgh", "mytest", "oxsecurity", "pastebin", "zeek", "zephir"],
   "version": "0.2"
