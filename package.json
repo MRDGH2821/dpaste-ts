@@ -48,9 +48,10 @@
     "prepublishOnly": "npm run build",
     "test": "uvu -r ts-node/register test",
     "mytest": "node test.js ",
-    "prepublish": "npm run build",
     "tsc-init": " cd node_modules/.bin/ && tsc --init",
-    "mega-lint": "npx mega-linter-runner@latest --flavor javascript"
+    "lint": "npx eslint . --fix --ignore-path .gitignore ",
+    "lint:mega": "npx mega-linter-runner@latest --flavor javascript",
+    "pretty": "npx prettier . --write --ignore-path .gitignore"
   },
   "dependencies": {
     "axios": "^0.25.0"
