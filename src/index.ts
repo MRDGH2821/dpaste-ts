@@ -1,6 +1,6 @@
-import { Syntax, Expiry_Days } from './interfaces';
-
-const axios = require('axios').default;
+import * as qs from 'querystring';
+import { Syntax, ExpiryDays } from './interfaces';
+import httpsRequest from './lib';
 
 /** Delays Function execution
  * @function delay
@@ -8,7 +8,7 @@ const axios = require('axios').default;
  * @returns {Promise<any>} Promise object which does nothing for given miliseconds
  */
 
-function delay(n = 1000): any {
+function delay(n: number = 1000): any {
   return new Promise((done) => {
     setTimeout(() => {
       done(1);
@@ -23,26 +23,43 @@ function delay(n = 1000): any {
  * @param {string} content - The paste data
  * @param {string} filename - The title for Paste
  * @param {Syntax} syntax - Paste encoding
- * @param {Expiry_Days} expiry_days - Expiry duration of the paste
+ * @param {Expiry_Days} expiryDays - Expiry duration of the paste
  * @returns {Promise<string>} - URL of Paste
  */
 export async function CreatePaste(
   content: string,
   filename: string = new Date().toUTCString(),
   syntax: Syntax = 'text',
-  expiry_days: Expiry_Days = 7,
+  expiryDays: ExpiryDays = 7,
 ): Promise<string> {
   delay(1000);
-  return axios({
-    url: 'https://dpaste.com/api/v2/',
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    data: `content=${encodeURIComponent(content)}&syntax=${encodeURIComponent(
-      syntax,
-    )}&title=${encodeURIComponent(filename)}&expiry_days${encodeURIComponent(expiry_days)}`,
-  })
-    .then((response: any) => response.data)
-    .catch((error: any) => error.response.data);
+  const inputData = {
+    content,
+    syntax,
+    title: filename,
+    expiry_days: expiryDays,
+  };
+  const url = new URL('https://dpaste.com/api/v2/');
+
+  return new Promise((resolve, reject) => {
+    httpsRequest(
+      {
+        host: url.host,
+        hostname: url.hostname,
+        path: url.pathname,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
+        },
+      },
+      qs.stringify(inputData),
+    )
+      .then((response) => {
+        resolve(response.body);
+      })
+      .catch(reject);
+  });
 }
 
 /**
@@ -53,19 +70,23 @@ export async function CreatePaste(
  * @returns {Promise<string>} - Raw data from paste
  */
 export async function GetRawPaste(url: string): Promise<string> {
-  let newURL = url;
-  if (!/https:\/\/dpaste.com\//gm.test(url)) {
-    newURL = `https://dpaste.com/${url}`;
-  } else if (/\n/.test(url)) {
-    newURL = url.slice(0, url.length - 1);
-  }
+  const newUrl = new URL(`${url.trim()}.txt`, 'https://dpaste.com/');
   delay(1000);
-  return axios
-    .get(`${newURL}.txt`)
-    .then((response: any) => String(response.data))
-    .catch((error: any) => {
-      const err = error.toJSON();
-      return `Error ${error.response.status}: ${error.response.statusText}\n${err.message}`;
-    });
+
+  return new Promise((resolve, reject) => {
+    httpsRequest({
+      host: newUrl.host,
+      hostname: newUrl.hostname,
+      path: newUrl.pathname,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
+      },
+    })
+      .then((response) => {
+        resolve(response.body);
+      })
+      .catch(reject);
+  });
 }
-export * from './interfaces';
