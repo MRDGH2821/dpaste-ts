@@ -8,10 +8,10 @@ import httpsRequest from './lib';
  * @returns {Promise<any>} Promise object which does nothing for given miliseconds
  */
 
-function delay(n: number = 1000): any {
-  return new Promise((done) => {
+async function delay(n: number = 1000): Promise<1> {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      done(1);
+      resolve(1);
     }, n);
   });
 }
@@ -32,7 +32,7 @@ export async function CreatePaste(
   syntax: Syntax = 'text',
   expiryDays: ExpiryDays = 7,
 ): Promise<string> {
-  delay(1000);
+  await delay(1000);
   const inputData = {
     content,
     syntax,
@@ -71,7 +71,7 @@ export async function CreatePaste(
  */
 export async function GetRawPaste(url: string): Promise<string> {
   const newUrl = new URL(`${url.trim()}.txt`, 'https://dpaste.com/');
-  delay(1000);
+  await delay(1000);
 
   return new Promise((resolve, reject) => {
     httpsRequest({
