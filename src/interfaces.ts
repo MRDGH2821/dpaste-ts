@@ -1,3 +1,5 @@
+import { IncomingMessage } from 'http';
+
 export type Syntax =
   | 'zig'
   | 'zephir'
@@ -474,7 +476,7 @@ export type Syntax =
   | 'apl'
   | 'abap';
 
-export type Expiry_Days =
+export type ExpiryDays =
   | 1
   | 2
   | 3
@@ -840,3 +842,9 @@ export type Expiry_Days =
   | 363
   | 364
   | 365;
+
+export type ResponseObject = {
+  statusCode: IncomingMessage['statusCode'];
+  headers: IncomingMessage['headers'];
+  body: string;
+};
