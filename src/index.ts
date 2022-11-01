@@ -24,7 +24,6 @@ async function delay(n: number = 1000): Promise<1> {
  * @returns {Promise<string>} - URL of Paste
  */
 export async function createPaste(options: CreatePasteOptions): Promise<string> {
-  await delay(1000);
   const inputData: APIOptions = {
     content: options.content,
     syntax: options.syntax || 'text',
@@ -32,7 +31,9 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
     expiry_days: options.expiry_days || 7,
   };
   const url = new URL('https://dpaste.com/api/v2/');
-
+  if (process.env.DPASTE_DISABLE_DELAY !== 'true') {
+    await delay(1000);
+  }
   return new Promise((resolve, reject) => {
     httpsRequest(
       {
@@ -68,7 +69,9 @@ export async function getRawPaste(
   APIToken: string | undefined = process.env.DPASTE_API_TOKEN,
 ): Promise<string> {
   const newUrl = new URL(`${url.trim()}.txt`, 'https://dpaste.com/');
-  await delay(1000);
+  if (process.env.DPASTE_DISABLE_DELAY !== 'true') {
+    await delay(1000);
+  }
 
   return new Promise((resolve, reject) => {
     httpsRequest({
