@@ -7,8 +7,9 @@ jobs:
     name: Node.js v${{ matrix.nodejs }}
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
-        nodejs: [12, 14, 16, 18]
+        nodejs: [10, 12, 14, 16, 18]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
