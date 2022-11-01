@@ -858,6 +858,8 @@ export type APIOptions = {
   /**
    * Title of the paste.
    *
+   * Title can be of max 100 characters. Will be truncated to first 100 characters
+   *
    * Default: `new Date().toUTCString()`
    */
   title?: string;

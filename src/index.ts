@@ -28,7 +28,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
   const inputData: APIOptions = {
     content: options.content,
     syntax: options.syntax || 'text',
-    title: options.title || new Date().toUTCString(),
+    title: options.title?.substring(0, 100) || new Date().toUTCString(),
     expiry_days: options.expiry_days || 7,
   };
   const url = new URL('https://dpaste.com/api/v2/');
