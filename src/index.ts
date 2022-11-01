@@ -27,7 +27,7 @@ async function delay(n: number = 1000): Promise<1> {
  * @param {string | undefined} APIToken - Dpaste API Token. Can be set using `DPASTE_API_TOKEN` environment variable. (Check Authentication in https://dpaste.com/api/v2/)
  * @returns {Promise<string>} - URL of Paste
  */
-export async function CreatePaste(
+export async function createPaste(
   content: string,
   title: string = new Date().toUTCString(),
   syntax: Syntax = 'text',
@@ -73,7 +73,7 @@ export async function CreatePaste(
  * @param {string | undefined} APIToken - Dpaste API Token. Can be set using `DPASTE_API_TOKEN` environment variable. (Check Authentication in https://dpaste.com/api/v2/)
  * @returns {Promise<string>} - Raw data from paste
  */
-export async function GetRawPaste(
+export async function getRawPaste(
   url: string,
   APIToken: string | undefined = process.env.DPASTE_API_TOKEN,
 ): Promise<string> {
