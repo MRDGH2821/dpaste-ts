@@ -1,5 +1,5 @@
 import * as qs from 'querystring';
-import { Syntax, ExpiryDays } from './interfaces';
+import { CreatePasteOptions, APIOptions } from './interfaces';
 import httpsRequest from './lib';
 
 /** Delays Function execution
@@ -19,27 +19,17 @@ async function delay(n: number = 1000): Promise<1> {
 /**
  * Creates Paste on dpaste.org
  * @async
- * @function CreatePaste
- * @param {string} content - The paste data
- * @param {string} title - The title for Paste
- * @param {Syntax} syntax - Paste encoding (Check here https://dpaste.com/api/v2/syntax-choices/)
- * @param {ExpiryDays} expiryDays - Expiry duration of the paste
- * @param {string | undefined} APIToken - Dpaste API Token. Can be set using `DPASTE_API_TOKEN` environment variable. (Check Authentication in https://dpaste.com/api/v2/)
+ * @function createPaste
+ * @param {CreatePasteOptions} options - options for creating a new paste
  * @returns {Promise<string>} - URL of Paste
  */
-export async function createPaste(
-  content: string,
-  title: string = new Date().toUTCString(),
-  syntax: Syntax = 'text',
-  expiryDays: ExpiryDays = 7,
-  APIToken: string | undefined = process.env.DPASTE_API_TOKEN,
-): Promise<string> {
+export async function createPaste(options: CreatePasteOptions): Promise<string> {
   await delay(1000);
-  const inputData = {
-    content,
-    syntax,
-    title,
-    expiry_days: expiryDays,
+  const inputData: APIOptions = {
+    content: options.content,
+    syntax: options.syntax || 'text',
+    title: options.title || new Date().toUTCString(),
+    expiry_days: options.expiry_days || 7,
   };
   const url = new URL('https://dpaste.com/api/v2/');
 
@@ -53,7 +43,7 @@ export async function createPaste(
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
-          Authorization: `Bearer ${APIToken}`,
+          Authorization: `Bearer ${options.APIToken}`,
         },
       },
       qs.stringify(inputData),
@@ -68,7 +58,7 @@ export async function createPaste(
 /**
  * Gets Paste from dpaste.org
  * @async
- * @function GetRawPaste
+ * @function getRawPaste
  * @param {string} url - The dpaste url
  * @param {string | undefined} APIToken - Dpaste API Token. Can be set using `DPASTE_API_TOKEN` environment variable. (Check Authentication in https://dpaste.com/api/v2/)
  * @returns {Promise<string>} - Raw data from paste

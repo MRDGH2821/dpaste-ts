@@ -847,3 +847,45 @@ export type ResponseObject = {
   response: IncomingMessage;
   body: string;
 };
+
+export type APIOptions = {
+  /**
+   * The paste data to be set.
+   *
+   * Required parameter
+   */
+  content: string;
+  /**
+   * Title of the paste.
+   *
+   * Default: `new Date().toUTCString()`
+   */
+  title?: string;
+  /**
+   * Paste encoding or syntax of the paste.
+   *
+   * Check available choices [here](https://dpaste.com/api/v2/syntax-choices/)
+   *
+   * Default: `text`
+   */
+  syntax?: Syntax;
+  /**
+   * Number of days after which paste will expire.
+   * Max is 365 days.
+   *
+   * Default: 7 days
+   */
+  expiry_days?: ExpiryDays;
+};
+
+export interface CreatePasteOptions extends APIOptions {
+  /**
+   * Dpaste API token.
+   * Can be left empty to create Anonymous pastes.
+   *
+   * Check Authentication in https://dpaste.com/api/v2/
+   *
+   * Default: `process.env.DPASTE_API_TOKEN`
+   */
+  APIToken?: string;
+}
