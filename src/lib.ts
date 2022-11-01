@@ -22,7 +22,7 @@ export default function httpsRequest(
         } else {
           reject(
             new Error(
-              `Request failed. Status: ${statusCode} \n\nHeaders: ${headers} \n\nBody: ${body}`,
+              `Request failed.\nResponse: ${res} \n\nStatus: ${statusCode} \n\nHeaders: ${headers} \n\nBody: ${body}`,
             ),
           );
         }
