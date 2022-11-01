@@ -1,3 +1,5 @@
+<!-- markdownlint-disable-file MD024 -->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -11,14 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.4] - 2021-11-20
 
-## Fixed
+### Fixed
 
 - Moved interfaces.ts to index.ts.
   Should fix the TSlinter problems.
 
 ## [1.0.3] - 2021-11-19
 
-## Fixed
+### Fixed
 
 - Fixed Interfaces.ts not getting imported.
 
