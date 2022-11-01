@@ -7,113 +7,140 @@
 Nodejs wrapper for [dpaste.com](https://dpaste.com/) written using Typescript.
 Creates & Gets pastes anonymously.
 
+Now with Authentication support!
+
 ## Usage
 
-The functions are promise based. Use them inside `async` functions or you may also use `.then().catch()`.
+The functions are promise based. Use them inside `async` functions or you may use `.then().catch()`.
 
 All functions have an internal delay of 1 second. This is to prevent abuse of [dpaste.com API](https://dpaste.com/api/v2/)
+
+### Disable delay
+
+Set the environment variable as follows -
+
+```sh
+DPASTE_DISABLE_DELAY = true
+```
+
+**Note:** if the rate of requests exceeds 1 request per second, then you will be blocked from API to create new pastes. Same applies for reading pastes.
+
+### Authentication
+
+Read more [here](https://dpaste.com/api/v2/) under Authentication section.
+
+Generate an API token key from your [dashboard](https://dpaste.com/dashboard).
+
+Set it into your environment with the variable name as `DPASTE_API_TOKEN`
 
 ### Import
 
 ```js
-const { CreatePaste, GetRawPaste } = require('dpaste-js');
+const { createPaste, getRawPaste } = require('dpaste-ts'); // in CJS style
+
+import { createPaste, getRawPaste } from 'dpaste-ts'; // in ESM style
 ```
 
 ### Create Paste
 
 Returns URL of dpaste.
 
-There are 4 arguments:
+There are 5 arguments:
 
-| Arguments   | Type   | Range/Limit                                             | Default values                       | Required? |
-| ----------- | ------ | ------------------------------------------------------- | ------------------------------------ | --------- |
-| content     | string | `250,000 bytes`                                         | NA                                   | `true`    |
-| filename    | string | NA                                                      | date & time of paste creation in UTC | `false`   |
-| syntax      | string | [Check here](https://dpaste.com/api/v2/syntax-choices/) | `'text'`                             | `false`   |
-| expiry_days | number | `1` to `365`                                            | `7`                                  | `false`   |
+| Arguments   | Type   | Range/Limit                                             | Default values                                                      | Required? |
+| ----------- | ------ | ------------------------------------------------------- | ------------------------------------------------------------------- | --------- |
+| content     | string | `250,000 bytes`                                         | Not Applicable                                                      | `true`    |
+| title       | string | First 100 characters                                    | date & time of paste creation in UTC                                | `false`   |
+| syntax      | string | [Check here](https://dpaste.com/api/v2/syntax-choices/) | `'text'`                                                            | `false`   |
+| expiry_days | number | `1` to `365`                                            | `7`                                                                 | `false`   |
+| APIToken    | string | Not Applicable                                          | Value set in environment variable `DPASTE_API_TOKEN` or `undefined` | `false`   |
 
 When inside async function:
 
 ```js
-let source = 'sample input';
-let title = 'sample day';
-let syntax = 'text';
-let expire = 1;
+const options = {
+  content: 'sample input',
+  title: 'sample title',
+  syntax: 'text',
+  expiry_days: 10,
+};
 
-//Will return dpaste link when successful
-let url = await CreatePaste(source, title, syntax, expire);
+// Will return dpaste link when successful
+let url = await createPaste(options);
 console.log(url);
 ```
 
-Using `.then().catch()`
+Using `.then()`
 
 ```js
-//Will return dpaste link to console
-CreatePaste(source, title, syntax, expire)
-  .then(console.log)
-  .catch(console.log);
+// Will return dpaste link to console
+createPaste(options).then(console.log);
 ```
 
 ### Get Raw Paste
 
 Returns Raw data of dpaste.
 
-There is 1 argument:
+There are 2 arguments:
 
 | Arguments | Type   | Required? |
 | --------- | ------ | --------- |
 | url/id    | string | `true`    |
+| APIToken  | string | `false`   |
 
 You can either provide complete URL of the dpaste or the ID of the paste.
 
 When inside async function:
 
 ```js
-//Will return "sample input" as raw data
-let rawData = await GetRawPaste(url);
+// Will return "sample input" as raw data
+let rawData = await getRawPaste(url);
 console.log(rawData);
 ```
 
-Using `.then().catch()`
+Using `.then()`
 
 ```js
-//Will return raw data to console
-GetRawPaste(url)
-  .then(console.log)
-  .catch(console.log);
+// Will return raw data to console
+getRawPaste(url).then(console.log);
 ```
 
 ### Complete example
 
 ```js
-const { CreatePaste, GetRawPaste } = require('dpaste-js');
+const { createPaste, getRawPaste } = require('dpaste-ts');
 
-let source = 'sample input';
-let title = 'sample title';
-let syntax = 'text';
-let expire = 1;
+const options = {
+  content: 'sample input',
+  title: 'sample title',
+  syntax: 'text',
+  expiry_days: 10,
+  APIToken: 'qwerty12345ag',
+};
+// This will set the API token into environment variable
+process.env.DPASTE_API_TOKEN = options.APIToken;
 
-//Use the below code snippet inside async functions to get the data.
+// This will **not** disable internal delay of 1 second. Set it to true if you wish to disable it.
+process.env.DPASTE_DISABLE_DELAY = 'false';
 
-//Will return dpaste link when successful
-let url = await CreatePaste(source, title, syntax, expire);
+// Use the below code snippet inside async functions to get the data.
+
+// Will return dpaste link when successful
+let url = await createPaste(options);
 console.log(url);
 
-//Will return "sample input" as raw data
-let rawData = await GetRawPaste(url);
+// Will return "sample input" as raw data
+let rawData = await getRawPaste(url);
 console.log(rawData);
 
-//Use the below snippets if you wish to use .then().catch()
+// Use the below snippets if you wish to use .then()
+// Put .catch() to catch any potential errors
 
-//Will return dpaste link to console
-CreatePaste(source, title, syntax, expire)
-  .then(console.log)
-  .catch(console.log);
+// Will return dpaste link to console
+createPaste(options).then(console.log);
 
-//Will return raw data to console
-GetRawPaste(url)
-  .then(console.log)
-  .catch(console.log);
+// Will return raw data to console
+getRawPaste(url).then(console.log);
 ```
 
 ## Licence
