@@ -844,7 +844,6 @@ export type ExpiryDays =
   | 365;
 
 export type ResponseObject = {
-  statusCode: IncomingMessage['statusCode'];
-  headers: IncomingMessage['headers'];
+  response: IncomingMessage;
   body: string;
 };

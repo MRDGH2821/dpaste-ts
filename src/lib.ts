@@ -18,7 +18,7 @@ export default function httpsRequest(
         const body = chunks.join('').trim();
 
         if (validResponse) {
-          resolve({ statusCode, headers, body });
+          resolve({ response: res, body });
         } else {
           reject(
             new Error(
