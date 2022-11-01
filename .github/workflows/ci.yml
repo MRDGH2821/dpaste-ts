@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        nodejs: [10, 12, 14, 16, 18, lts, current]
+        nodejs: [10, 12, 14, 16, 18]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
