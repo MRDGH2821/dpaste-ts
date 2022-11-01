@@ -21,14 +21,14 @@ async function delay(n: number = 1000): Promise<1> {
  * @async
  * @function CreatePaste
  * @param {string} content - The paste data
- * @param {string} filename - The title for Paste
+ * @param {string} title - The title for Paste
  * @param {Syntax} syntax - Paste encoding
- * @param {Expiry_Days} expiryDays - Expiry duration of the paste
+ * @param {ExpiryDays} expiryDays - Expiry duration of the paste
  * @returns {Promise<string>} - URL of Paste
  */
 export async function CreatePaste(
   content: string,
-  filename: string = new Date().toUTCString(),
+  title: string = new Date().toUTCString(),
   syntax: Syntax = 'text',
   expiryDays: ExpiryDays = 7,
 ): Promise<string> {
@@ -36,7 +36,7 @@ export async function CreatePaste(
   const inputData = {
     content,
     syntax,
-    title: filename,
+    title,
     expiry_days: expiryDays,
   };
   const url = new URL('https://dpaste.com/api/v2/');
