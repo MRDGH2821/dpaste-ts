@@ -1,4 +1,4 @@
-import * as qs from 'querystring';
+import { stringify as queryStringify } from 'querystring';
 import { CreatePasteOptions, APIOptions } from './interfaces';
 import httpsRequest from './lib';
 
@@ -48,7 +48,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
           Authorization: `Bearer ${options.APIToken}`,
         },
       },
-      qs.stringify(inputData),
+      queryStringify(inputData),
     )
       .then((response) => {
         resolve(response.body);
