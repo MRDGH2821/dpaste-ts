@@ -11,7 +11,7 @@ Now with Authentication support!
 
 ## Usage
 
-The functions are promise based. Use them inside `async` functions or you may use `.then().catch()`.
+The functions are [promise](https://developer.mozilla.org/en-US/docs/web/javascript/reference/global_objects/promise) based. Use them inside `async` functions or you may use `.then().catch()`.
 
 All functions have an internal delay of 1 second. This is to prevent abuse of [dpaste.com API](https://dpaste.com/api/v2/)
 
@@ -27,7 +27,7 @@ DPASTE_DISABLE_DELAY = true
 
 ### Authentication
 
-Read more [here](https://dpaste.com/api/v2/) under Authentication section.
+_Read more [here](https://dpaste.com/api/v2/) under Authentication section._
 
 Generate an API token key from your [dashboard](https://dpaste.com/dashboard).
 
