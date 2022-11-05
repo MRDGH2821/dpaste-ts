@@ -11,6 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add scraping functionality which will include Title, Syntax, Expiry date & other relevant properties along with Raw data.
 
+## [2.0.0] - 2022-11-05
+
+### Added
+
+- Authentication Support
+- Ability to disable 1 second delay
+- Auto truncate paste title to first 100 characters
+
+### Changed
+
+- Function names from UpperPascalCase to lowerPascalCase. **Breaking Change!**
+- Rewrite whole source code to be zero dependency module and to follow dpaste API specification. **Breaking Change!**
+- `createPaste()` now accepts one object as parameter instead of multiple parameters. **Breaking Change!**
+- `getRawPaste()` now accepts 2nd parameter `APIToken`
+
 ## [1.0.4] - 2021-11-20
 
 ### Fixed
