@@ -46,3 +46,18 @@ get('Should throw error on invalid input', async () => {
   }
 });
 get.run();
+
+const createAuth = suite('createAuth');
+
+createAuth('Should be able to create paste with API Token', async () => {
+  const urlAuth = await paste.createPaste({
+    content: `dpaste-ts test case, performed on ${new Date().toUTCString()}`,
+    APIToken: process.env.DPASTE_API_TOKEN_GIT,
+    title: 'dpaste-ts test case',
+    syntax: 'text',
+  });
+  console.log(urlAuth);
+  assert.type(urlAuth, 'string');
+});
+
+createAuth.run();
