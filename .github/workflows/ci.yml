@@ -26,6 +26,8 @@ jobs:
 
       - name: Test w/ Coverage
         run: c8 --include=src npm test
+        env:
+          DPASTE_API_TOKEN_GIT: ${{secrets.DPASTE_API_TOKEN_GIT}}
 
       - name: Report
         if: matrix.nodejs >= 14
@@ -34,4 +36,3 @@ jobs:
           bash <(curl -s https://codecov.io/bash)
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-          DPASTE_API_TOKEN_GIT: ${{secrets.DPASTE_API_TOKEN_GIT}}
