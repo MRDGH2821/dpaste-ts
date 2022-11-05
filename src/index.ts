@@ -3,9 +3,10 @@ import { CreatePasteOptions, APIOptions } from './interfaces';
 import httpsRequest from './lib';
 
 /** Delays Function execution
+ * @async
  * @function delay
  * @param {number} n - Delay in miliseconds
- * @returns {Promise<any>} Promise object which does nothing for given miliseconds
+ * @returns {Promise<1>} - Returns `1` after delay is complete.
  */
 
 async function delay(n: number = 1000): Promise<1> {
