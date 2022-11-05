@@ -7,7 +7,5 @@ node_modules
 /dist
 /types
 .yalc
-
 megalinter-reports/
-
 .nyc_output/
