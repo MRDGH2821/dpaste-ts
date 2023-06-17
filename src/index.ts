@@ -18,7 +18,7 @@ async function delay(n: number = 1000): Promise<1> {
 }
 
 /**
- * Creates Paste on dpaste.org
+ * Creates Paste on dpaste.com
  * @async
  * @function createPaste
  * @param {CreatePasteOptions} options - options for creating a new paste
@@ -58,7 +58,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
 }
 
 /**
- * Gets Paste from dpaste.org
+ * Gets Paste from dpaste.com
  * @async
  * @function getRawPaste
  * @param {string} url - The dpaste url
