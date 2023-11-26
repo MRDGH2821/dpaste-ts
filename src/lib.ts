@@ -2,7 +2,7 @@ import { request, RequestOptions } from 'https';
 
 import { ResponseObject } from './interfaces';
 
-export default function httpsRequest(
+export default async function httpsRequest(
   urlOptions: RequestOptions,
   inputData = '',
 ): Promise<ResponseObject> {
