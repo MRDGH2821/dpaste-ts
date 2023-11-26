@@ -25,6 +25,9 @@
     "url": "https://bit.ly/mrdgh2821"
   },
   "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "lint": "npx eslint . --fix --ignore-path .gitignore ",
     "lint:mega": "npx mega-linter-runner@latest --flavor javascript",
     "mytest": "node test.js ",
