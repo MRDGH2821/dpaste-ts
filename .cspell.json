@@ -1,5 +1,6 @@
 {
   "allowCompoundWords": true,
+  "caseSensitive": false,
   "ignorePaths": [
     "**/node_modules/**",
     "**/vscode-extension/**",
@@ -18,11 +19,6 @@
   "useGitignore": true,
   "version": "0.2",
   "words": [
-    "CODECOV",
-    "Currin",
-    "DPASTE",
-    "Dpaste",
-    "MRDGH",
     "abap",
     "abnf",
     "agda",
@@ -47,6 +43,7 @@
     "croc",
     "csound",
     "cuda",
+    "currin",
     "cython",
     "dasm",
     "dbaeumer",
@@ -67,6 +64,7 @@
     "hsail",
     "hspec",
     "hylang",
+    "ianvs",
     "idris",
     "ioke",
     "jlcon",
