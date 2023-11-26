@@ -24,23 +24,7 @@
     "name": "MRDGH2821",
     "url": "https://bit.ly/mrdgh2821"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "dist/index.js",
-  "unpkg": "dist/index.min.js",
-  "module": "dist/index.mjs",
-  "types": "types/index.d.ts",
-  "files": [
-    "dist",
-    "types"
-  ],
   "scripts": {
-    "build": "rollup -c",
     "lint": "npx eslint . --fix --ignore-path .gitignore ",
     "lint:mega": "npx mega-linter-runner@latest --flavor javascript",
     "mytest": "node test.js ",
@@ -50,25 +34,20 @@
     "tsc-init": " cd node_modules/.bin/ && tsc --init"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@types/node": "^18.18.13",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/node": "^20.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
     "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.1.0",
     "prettier-config-mrdgh2821": "^3.0.0",
     "prettier-plugin-packagejson": "^2.4.6",
-    "rollup": "^2.79.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.34.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5",
+    "typescript": "^5.3.2",
     "uvu": "^0.5.6"
   },
   "engines": {
     "node": ">= 10"
-  },
-  "umd:name": "dpaste-ts"
+  }
 }
