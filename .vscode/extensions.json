@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "adam-bender.commit-message-editor",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "cschlosser.doxdocgen",
+    "DavidAnson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "evondev.indent-rainbow-palettes",
+    "idered.npm",
+    "MichaelCurrin.auto-commit-msg",
+    "ms-azuretools.vscode-docker",
+    "oderwat.indent-rainbow",
+    "p42ai.refactor",
+    "redhat.vscode-yaml",
+    "spmeesseman.vscode-taskexplorer",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "wdhongtw.gpg-indicator"
+  ]
+}
