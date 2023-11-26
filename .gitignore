@@ -6,3 +6,4 @@ node_modules
 .yalc
 megalinter-reports/
 .nyc_output/
+.env
