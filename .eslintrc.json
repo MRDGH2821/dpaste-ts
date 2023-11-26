@@ -3,7 +3,6 @@
   "parserOptions": {
     "project": ["./tsconfig.json", "./tsconfig.eslint.json"]
   },
-  "ignorePatterns": ["rollup.config.js"],
   "rules": {
     "no-console": "off"
   }
