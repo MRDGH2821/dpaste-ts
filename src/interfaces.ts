@@ -843,12 +843,12 @@ export type ExpiryDays =
   | 364
   | 365;
 
-export type ResponseObject = {
+export interface ResponseObject {
   response: IncomingMessage;
   body: string;
-};
+}
 
-export type APIOptions = {
+export interface APIOptions {
   /**
    * The paste data to be set.
    *
@@ -878,7 +878,7 @@ export type APIOptions = {
    * Default: 7 days
    */
   expiry_days?: ExpiryDays;
-};
+}
 
 export interface CreatePasteOptions extends APIOptions {
   /**
