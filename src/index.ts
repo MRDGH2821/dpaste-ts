@@ -5,7 +5,7 @@ import httpsRequest from './lib';
 /** Delays Function execution
  * @async
  * @function delay
- * @param {number} n - Delay in miliseconds
+ * @param {number} n - Delay in milliseconds
  * @returns {Promise<1>} - Returns `1` after delay is complete.
  */
 
