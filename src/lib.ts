@@ -1,5 +1,4 @@
 import { request, RequestOptions } from 'https';
-
 import { ResponseObject } from './interfaces';
 
 export default async function httpsRequest(

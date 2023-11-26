@@ -1,5 +1,5 @@
 import { stringify as queryStringify } from 'querystring';
-import { CreatePasteOptions, APIOptions } from './interfaces';
+import { APIOptions, CreatePasteOptions } from './interfaces';
 import httpsRequest from './lib';
 
 /** Delays Function execution
