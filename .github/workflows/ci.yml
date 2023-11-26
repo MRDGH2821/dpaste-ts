@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        nodejs: [12, 14, 16, 18]
+        nodejs: [18, 20]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -30,7 +30,7 @@ jobs:
           DPASTE_API_TOKEN_GIT: ${{secrets.DPASTE_API_TOKEN_GIT}}
 
       - name: Report
-        if: matrix.nodejs >= 14
+        if: matrix.nodejs >= 18
         run: |
           nyc report --reporter=text-lcov > coverage.lcov
           bash <(curl -s https://codecov.io/bash)
