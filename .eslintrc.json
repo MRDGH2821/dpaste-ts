@@ -1,8 +1,9 @@
 {
   "extends": ["eslint-config-airbnb-base", "eslint-config-airbnb-typescript/base"],
   "parserOptions": {
-    "project": ["tsconfig.json", "tsconfig.eslint.json"]
+    "project": ["./tsconfig.json", "./tsconfig.eslint.json"]
   },
+  "ignorePatterns": ["rollup.config.js"],
   "rules": {
     "no-console": "off"
   }

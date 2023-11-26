@@ -4,5 +4,9 @@
   "editor.tabSize": 2,
   "git.enableCommitSigning": true,
   "prettier.prettierPath": "./node_modules/prettier",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
