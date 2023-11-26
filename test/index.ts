@@ -57,7 +57,7 @@ get('Should get a paste & return String', async () => {
 get('Should throw error on invalid input', async () => {
   await delay();
   try {
-    await paste.getRawPaste('sgfsgsg');
+    await paste.getRawPaste('should throw error');
     assert.unreachable('Should have thrown error');
   } catch (error) {
     assert.instance(error, Error);
