@@ -1,6 +1,5 @@
 import { stringify as queryStringify } from 'querystring';
 import { APIOptions, CreatePasteOptions } from './interfaces';
-import httpsRequest from './lib';
 
 /** Delays Function execution
  * @async
@@ -31,27 +30,25 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
     title: options.title ? options.title.substring(0, 100) : new Date().toUTCString(),
     expiry_days: options.expiry_days || 7,
   };
-  const url = new URL('https://dpaste.com/api/v2/');
+  const url = new URL(`https://dpaste.com/api/v2/${queryStringify(inputData)}`);
   if (process.env.DPASTE_DISABLE_DELAY !== 'true') {
     await delay(1000);
   }
   return new Promise((resolve, reject) => {
-    httpsRequest(
-      {
-        host: url.host,
-        hostname: url.hostname,
-        path: url.pathname,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
-          Authorization: `Bearer ${options.APIToken}`,
-        },
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
+        Authorization: `Bearer ${options.APIToken}`,
       },
-      queryStringify(inputData),
-    )
+    })
       .then((response) => {
-        resolve(response.body);
+        if (response.ok) {
+          resolve(response.text());
+        } else {
+          reject(new Error(`Error ${response.status}: ${response.statusText}`));
+        }
       })
       .catch(reject);
   });
@@ -75,10 +72,7 @@ export async function getRawPaste(
   }
 
   return new Promise((resolve, reject) => {
-    httpsRequest({
-      host: newUrl.host,
-      hostname: newUrl.hostname,
-      path: newUrl.pathname,
+    fetch(newUrl, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -87,7 +81,11 @@ export async function getRawPaste(
       },
     })
       .then((response) => {
-        resolve(response.body);
+        if (response.ok) {
+          resolve(response.text());
+        } else {
+          reject(new Error(`Error ${response.status}: ${response.statusText}`));
+        }
       })
       .catch(reject);
   });
