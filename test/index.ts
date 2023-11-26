@@ -35,7 +35,7 @@ create('Should throw error on invalid syntax', async () => {
     await paste.createPaste({
       content: data,
       title,
-      // @ts-ignore
+      // @ts-expect-error
       syntax: 'plain',
       expiry_days: 1,
     });
