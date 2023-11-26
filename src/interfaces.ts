@@ -848,7 +848,7 @@ export interface ResponseObject {
   body: string;
 }
 
-export interface APIOptions {
+export interface APIOptions extends NodeJS.Dict<string | number> {
   /**
    * The paste data to be set.
    *
