@@ -5,7 +5,9 @@
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "NodeNext",
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "outDir": "dist",
+    "declarationDir": "dist/types"
   },
   "exclude": ["node_modules", "dist"]
 }
