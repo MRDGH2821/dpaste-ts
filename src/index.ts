@@ -1,5 +1,5 @@
 import { stringify as queryStringify } from 'querystring';
-import { APIOptions, CreatePasteOptions } from './interfaces';
+import type { APIOptions, CreatePasteOptions } from './types/interfaces';
 
 /** Delays Function execution
  * @async
