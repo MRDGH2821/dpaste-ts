@@ -40,7 +40,7 @@ describe('Paste creation', () => {
       syntax: 'plain',
       expiry_days: 1,
     }),
-  ).rejects.toMatch('error'));
+  ).rejects.toThrowError('API Error'));
 });
 
 describe('Get paste', () => {
@@ -53,7 +53,7 @@ describe('Get paste', () => {
   });
 
   test('Should throw error on invalid input', async () => {
-    await expect(paste.getRawPaste('should throw error')).rejects.toMatch('error');
+    await expect(paste.getRawPaste('should throw error')).rejects.toThrowError('API Error');
   });
 });
 
