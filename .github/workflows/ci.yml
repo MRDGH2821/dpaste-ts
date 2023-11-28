@@ -11,28 +11,24 @@ jobs:
       matrix:
         nodejs: [18, 20]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.nodejs }}
 
-      - name: Install
-        run: |
-          npm install
-          npm install -g nyc
+      - name: Install dependencies
+        run: npm install
 
-      - name: Compiles
+      - name: Compile source code
         run: npm run build
 
       - name: Test w/ Coverage
-        run: nyc --include=src npm test
+        run: npm test
         env:
           DPASTE_API_TOKEN_GIT: ${{secrets.DPASTE_API_TOKEN_GIT}}
 
       - name: Report
         if: matrix.nodejs >= 18
-        run: |
-          nyc report --reporter=text-lcov > coverage.lcov
-          bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
