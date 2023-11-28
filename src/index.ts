@@ -52,9 +52,10 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
         } else {
           const retryAfter = response.headers.get('Retry-After');
           const retryText = retryAfter ? `\nRetry after ${retryAfter} second(s)` : '';
+          const text = await response.text();
           reject(
-            new Error(`${await response.text()}${retryText}`, {
-              cause: `API Error ${response.status}: ${response.statusText}`,
+            new Error(text, {
+              cause: `API Error ${response.status}: ${response.statusText}\n${retryText}`,
             }),
           );
         }
