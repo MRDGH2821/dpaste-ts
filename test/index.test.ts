@@ -40,6 +40,16 @@ describe('Paste creation', () => {
       expiry_days: 1,
     }),
   ).rejects.toThrowError());
+
+  test('Should throw an error on invalid expiry_days', async () => expect(
+    createPaste({
+      content,
+      title,
+      syntax: 'text',
+      // @ts-expect-error
+      expiry_days: 400,
+    }),
+  ).rejects.toThrowError());
 });
 
 describe('Get paste', () => {
