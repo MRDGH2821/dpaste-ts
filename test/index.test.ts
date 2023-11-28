@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { setTimeout } from 'timers/promises';
 import {
   beforeAll, describe, expect, test,
 } from '@jest/globals';
@@ -9,13 +10,8 @@ const title = 'Dpaste Module Test';
 
 const url = paste.createPaste({ content, title });
 
-async function delay() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.info('1 second wait done.');
-      resolve(1);
-    }, 1000);
-  });
+async function delay(n: number = 1000): Promise<1> {
+  return setTimeout(n, 1);
 }
 
 describe('Exports', () => {

@@ -1,4 +1,5 @@
 import { stringify as queryStringify } from 'querystring';
+import { setTimeout } from 'timers/promises';
 import type { APIOptions, CreatePasteOptions } from './types/interfaces';
 
 /** Delays Function execution
@@ -9,11 +10,7 @@ import type { APIOptions, CreatePasteOptions } from './types/interfaces';
  */
 
 async function delay(n: number = 1000): Promise<1> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(1);
-    }, n);
-  });
+  return setTimeout(n, 1);
 }
 
 /**
