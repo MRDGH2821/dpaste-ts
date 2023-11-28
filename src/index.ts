@@ -30,7 +30,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
     title: options.title ? options.title.substring(0, 100) : new Date().toUTCString(),
     expiry_days: options.expiry_days || 7,
   };
-  const url = new URL(`https://dpaste.com/api/v2/${queryStringify(inputData)}`);
+  const url = new URL('https://dpaste.com/api/v2/');
   if (process.env.DPASTE_DISABLE_DELAY !== 'true') {
     await delay(1000);
   }
@@ -42,6 +42,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
         'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
         Authorization: `Bearer ${options.APIToken}`,
       },
+      body: queryStringify(inputData),
     })
       .then((response) => {
         if (response.ok) {
