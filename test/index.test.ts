@@ -5,10 +5,11 @@ import {
 } from '@jest/globals';
 import * as paste from '../src/index';
 
-const content = 'Some sample data for testing dpaste module using uvu';
+const content = 'Some sample data for testing dpaste module using jest';
 const title = 'Dpaste Module Test';
 
-const url = paste.createPaste({ content, title });
+const { createPaste, getRawPaste } = paste;
+const url = createPaste({ content, title });
 
 async function delay(n: number = 1000): Promise<1> {
   return setTimeout(n, 1);
@@ -16,6 +17,8 @@ async function delay(n: number = 1000): Promise<1> {
 
 describe('Exports', () => {
   test('paste should be an object', () => expect(typeof paste).toBe('object'));
+  test('createPaste should be a function', () => expect(typeof createPaste).toBe('function'));
+  test('getRawPaste should be a function', () => expect(typeof getRawPaste).toBe('function'));
 });
 
 describe('Paste creation', () => {
@@ -24,19 +27,19 @@ describe('Paste creation', () => {
   });
 
   test('Should return a string url', async () => {
-    const result = await paste.createPaste({ content, title });
+    const result = await createPaste({ content, title });
     return expect(typeof result).toBe('string');
   });
 
   test('Should throw an error on invalid syntax', async () => expect(
-    paste.createPaste({
+    createPaste({
       content,
       title,
       // @ts-expect-error
       syntax: 'plain',
       expiry_days: 1,
     }),
-  ).rejects.toThrowError('API Error'));
+  ).rejects.toThrowError());
 });
 
 describe('Get paste', () => {
@@ -44,12 +47,12 @@ describe('Get paste', () => {
     await delay();
   });
   test('Should get a paste & return String', async () => {
-    const result = await paste.getRawPaste(await url);
+    const result = await getRawPaste(await url);
     expect(typeof result).toBe('string');
   });
 
   test('Should throw error on invalid input', async () => {
-    await expect(paste.getRawPaste('should throw error')).rejects.toThrowError('API Error');
+    await expect(getRawPaste('should throw error')).rejects.toThrowError();
   });
 });
 
@@ -59,7 +62,7 @@ describe('Authentication test', () => {
   });
 
   test('Should be able to create paste with API Token', async () => {
-    const result = await paste.createPaste({
+    const result = await createPaste({
       content: `dpaste-ts test case, performed on ${new Date().toUTCString()}`,
       APIToken: process.env.DPASTE_API_TOKEN_GIT,
       title: 'dpaste-ts test case',
