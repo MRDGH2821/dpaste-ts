@@ -8,7 +8,6 @@ import type { APIOptions, CreatePasteOptions } from './types/interfaces';
  * @param {number} n - Delay in milliseconds
  * @returns {Promise<1>} - Returns `1` after delay is complete.
  */
-
 async function delay(n: number = 1000): Promise<1> {
   return setTimeout(n, 1);
 }
@@ -65,7 +64,7 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
 }
 
 /**
- * Gets Paste from dpaste.com
+ * Gets Raw Paste from dpaste.com
  * @async
  * @function getRawPaste
  * @param {string} url - The dpaste url
