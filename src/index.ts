@@ -31,14 +31,19 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
   if (process.env.DPASTE_DISABLE_DELAY !== 'true') {
     await delay(1000);
   }
+
+  const headers = new Headers({
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
+  });
+  if (options.APIToken || process.env.DPASTE_API_TOKEN) {
+    headers.set('Authorization', `Bearer ${options.APIToken}`);
+  }
+
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'dpaste-ts dpaste wrapper for node.js',
-        Authorization: `Bearer ${options.APIToken}`,
-      },
+      headers,
       body: queryStringify(inputData),
     })
       .then(async (response) => {
