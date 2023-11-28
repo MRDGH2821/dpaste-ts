@@ -7,3 +7,4 @@ node_modules
 megalinter-reports/
 .nyc_output/
 .env
+coverage/
