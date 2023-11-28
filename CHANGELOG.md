@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use Node `fetch()` instead of `https.request()`.
+- Overwrite old git history to protect privacy
 
 ### Removed
 
