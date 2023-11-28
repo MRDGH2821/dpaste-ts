@@ -44,16 +44,15 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
       },
       body: queryStringify(inputData),
     })
-      .then((response) => {
-        console.info(response.url);
+      .then(async (response) => {
         if (response.ok) {
           resolve(response.text());
         } else {
           const retryAfter = response.headers.get('Retry-After');
           const retryText = retryAfter ? `\nRetry after ${retryAfter} second(s)` : '';
           reject(
-            new Error(`${response.statusText}${retryText}`, {
-              cause: `API Error ${response.status}`,
+            new Error(`${await response.text()}${retryText}`, {
+              cause: `API Error ${response.status}: ${response.statusText}`,
             }),
           );
         }
@@ -88,15 +87,15 @@ export async function getRawPaste(
         Authorization: `Bearer ${APIToken}`,
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           resolve(response.text());
         } else {
           const retryAfter = response.headers.get('Retry-After');
           const retryText = retryAfter ? `\nRetry after ${retryAfter} second(s)` : '';
           reject(
-            new Error(`${response.statusText}${retryText}`, {
-              cause: `API Error ${response.status}`,
+            new Error(`${await response.text()}${retryText}`, {
+              cause: `API Error ${response.status}: ${response.statusText}`,
             }),
           );
         }
