@@ -45,10 +45,17 @@ export async function createPaste(options: CreatePasteOptions): Promise<string> 
       body: queryStringify(inputData),
     })
       .then((response) => {
+        console.info(response.url);
         if (response.ok) {
           resolve(response.text());
         } else {
-          reject(new Error(`Error ${response.status}: ${response.statusText}`));
+          const retryAfter = response.headers.get('Retry-After');
+          const retryText = retryAfter ? `\nRetry after ${retryAfter} second(s)` : '';
+          reject(
+            new Error(`${response.statusText}${retryText}`, {
+              cause: `API Error ${response.status}`,
+            }),
+          );
         }
       })
       .catch(reject);
@@ -85,7 +92,13 @@ export async function getRawPaste(
         if (response.ok) {
           resolve(response.text());
         } else {
-          reject(new Error(`Error ${response.status}: ${response.statusText}`));
+          const retryAfter = response.headers.get('Retry-After');
+          const retryText = retryAfter ? `\nRetry after ${retryAfter} second(s)` : '';
+          reject(
+            new Error(`${response.statusText}${retryText}`, {
+              cause: `API Error ${response.status}`,
+            }),
+          );
         }
       })
       .catch(reject);
