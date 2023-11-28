@@ -9,7 +9,7 @@ const content = 'Some sample data for testing dpaste module using jest';
 const title = 'Dpaste Module Test';
 
 const { createPaste, getRawPaste } = paste;
-const url = createPaste({ content, title });
+const pasteURL = createPaste({ content, title });
 
 async function delay(n: number = 1000): Promise<1> {
   return setTimeout(n, 1);
@@ -57,7 +57,7 @@ describe('Get paste', () => {
     await delay();
   });
   test('Should get a paste & return String', async () => {
-    const result = await getRawPaste(await url);
+    const result = await getRawPaste(await pasteURL);
     expect(typeof result).toBe('string');
   });
 
