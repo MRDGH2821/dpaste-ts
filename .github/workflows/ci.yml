@@ -23,7 +23,7 @@ jobs:
         run: npm run build
 
       - name: Test w/ Coverage
-        run: npm test
+        run: npx jest
         env:
           DPASTE_API_TOKEN_GIT: ${{secrets.DPASTE_API_TOKEN_GIT}}
 
